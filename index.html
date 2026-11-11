@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>아침 시황 브리핑</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{--bg:#f4f6f9;--surface:#fff;--ink:#14213d;--sub:#5b6577;--line:#dde2ea;--up:#d3302c;--down:#1f5fd0;--accent:#14213d;--accent-ink:#fff;--warn-bg:#fff4d6;--warn-ink:#6b4e00;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141c;--surface:#181e29;--ink:#e8ecf3;--sub:#9aa5b8;--line:#2a3344;--up:#ff6b64;--down:#6a9bff;--accent:#e8ecf3;--accent-ink:#10141c;--warn-bg:#3a2f10;--warn-ink:#ffd777}}
+:root[data-theme="dark"]{--bg:#10141c;--surface:#181e29;--ink:#e8ecf3;--sub:#9aa5b8;--line:#2a3344;--up:#ff6b64;--down:#6a9bff;--accent:#e8ecf3;--accent-ink:#10141c;--warn-bg:#3a2f10;--warn-ink:#ffd777}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:20px 20px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--sub)}
+.top b{color:var(--ink);font-weight:700}
+.sample{margin:14px 0 0;padding:8px 12px;border-radius:6px;background:var(--warn-bg);color:var(--warn-ink);font-size:13px}
+h1{margin:28px 0 8px;font-size:clamp(28px,5.2vw,48px);line-height:1.25;font-weight:900;letter-spacing:-.02em;max-width:22ch}
+.lead{margin:0 0 28px;color:var(--sub);max-width:60ch}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+section{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 20px 12px}
+h2{margin:0 0 4px;font-size:20px;font-weight:700}
+.when{font-size:13px;color:var(--sub);margin-bottom:10px}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.row .n{font-weight:500}
+.row .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.row .c{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:13px;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:6px;background:var(--line);border-radius:3px;position:relative;overflow:hidden}
+.bar i{position:absolute;top:0;bottom:0;border-radius:3px}
+.up{color:var(--up)}.down{color:var(--down)}
+.bar .up{background:var(--up)}.bar .down{background:var(--down)}
+.txt{margin:14px 0 8px;font-size:15px}
+.txt p{margin:0 0 8px;max-width:62ch}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 10px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 4px;text-align:right;border-top:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--sub);border-top:0}
+.full{margin-top:28px}
+ul.chk{margin:8px 0 12px;padding:0;list-style:none}
+ul.chk li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+ul.chk time{font-weight:700;color:var(--sub);font-variant-numeric:tabular-nums}
+.pb{border-left:4px solid var(--accent)}
+.pb .box{min-height:84px;padding:10px 12px;border:1px dashed var(--line);border-radius:6px;font-size:15px;outline:none}
+.pb .box:focus{border-color:var(--accent)}
+.hint{font-size:12px;color:var(--sub);margin:6px 0 8px}
+footer{margin-top:28px;font-size:12px;color:var(--sub);max-width:80ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span><b>아침 시황 브리핑</b></span><span id="today"></span></div>
+  <div class="sample" id="sample" hidden></div>
+
+  <h1 id="headline"></h1>
+  <p class="lead" id="lead"></p>
+
+  <div class="grid">
+    <section id="us"></section>
+    <section id="kr"></section>
+  </div>
+
+  <section class="full" id="macro"></section>
+
+  <div class="grid full">
+    <section id="check"></section>
+    <section class="pb">
+      <h2>PB 코멘트</h2>
+      <div class="box" id="pbbox"></div>
+    </section>
+  </div>
+
+  <footer>본 자료는 투자 참고용 정보이며 투자 권유가 아닙니다. 투자 판단의 책임은 투자자 본인에게 있으며, 자료의 정확성과 완전성을 보장하지 않습니다. 게시 전 소속 회사의 심의 및 컴플라이언스 기준을 확인하세요.</footer>
+</div>
+
+<script>
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(render).catch(()=>{document.getElementById('headline').textContent='데이터를 불러오지 못했습니다.'});
+function render(DATA){
+const f=(n)=>n.toLocaleString("ko-KR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const cls=(p)=>p>0?"up":p<0?"down":"";
+const sg=(p)=>(p>0?"▲ ":p<0?"▼ ":"")+Math.abs(p).toFixed(2)+"%";
+function bar(p){const w=Math.min(Math.abs(p)/3,1)*50;const s=p>=0?`left:50%;width:${w}%`:`right:50%;width:${w}%`;return `<span class="bar"><i class="${cls(p)}" style="${s}"></i></span>`}
+function rows(list,fmt){return list.map(([n,v,p])=>`<div class="row"><span class="n">${n}</span><span class="v">${fmt?v:f(v)}</span><span class="c ${cls(p)}">${bar(p)}<span>${sg(p)}</span></span></div>`).join("")}
+function paras(a){return `<div class="txt">${a.map(t=>`<p>${t}</p>`).join("")}</div>`}
+const d=new Date();
+document.getElementById("today").textContent=d.toLocaleDateString("ko-KR",{year:"numeric",month:"long",day:"numeric",weekday:"short"});
+document.getElementById("headline").textContent=DATA.headline;
+document.getElementById("lead").textContent=DATA.lead;
+document.getElementById("us").innerHTML=`<h2>미국 증시</h2><div class="when">${DATA.us.when}</div>${rows(DATA.us.idx)}${paras(DATA.us.text)}`;
+const flow=!DATA.kr.flow?"":`<table><tr><th>투자자별 순매수(억원)</th><th>코스피</th><th>코스닥</th></tr>${DATA.kr.flow.map(r=>`<tr><td>${r[0]}</td><td class="${r[1][0]=="+"?"up":"down"}">${r[1]}</td><td class="${r[2][0]=="+"?"up":"down"}">${r[2]}</td></tr>`).join("")}</table>`;
+document.getElementById("kr").innerHTML=`<h2>한국 증시</h2><div class="when">${DATA.kr.when}</div>${rows(DATA.kr.idx)}${flow}${paras(DATA.kr.text)}`;
+document.getElementById("macro").innerHTML=`<h2>환율·금리·원자재</h2>${rows(DATA.macro,true)}`;
+document.getElementById("check").innerHTML=`<h2>오늘의 체크포인트</h2><ul class="chk">${DATA.check.map(([t,x])=>`<li><time>${t}</time><span>${x}</span></li>`).join("")}</ul>`;
+document.getElementById("pbbox").textContent=DATA.comment||"오늘의 코멘트가 아직 없습니다.";
+if(DATA.sample){const x=document.getElementById("sample");x.hidden=false;x.textContent="샘플 데이터입니다. 실제 시세가 아닙니다."}
+}
+</script>
+</body>
+</html>
