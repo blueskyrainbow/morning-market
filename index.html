@@ -2,100 +2,362 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>아침 시황 브리핑</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모닝 마켓 보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,800&family=Archivo:wght@400;600&family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6f9;--surface:#fff;--ink:#14213d;--sub:#5b6577;--line:#dde2ea;--up:#d3302c;--down:#1f5fd0;--accent:#14213d;--accent-ink:#fff;--warn-bg:#fff4d6;--warn-ink:#6b4e00;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141c;--surface:#181e29;--ink:#e8ecf3;--sub:#9aa5b8;--line:#2a3344;--up:#ff6b64;--down:#6a9bff;--accent:#e8ecf3;--accent-ink:#10141c;--warn-bg:#3a2f10;--warn-ink:#ffd777}}
-:root[data-theme="dark"]{--bg:#10141c;--surface:#181e29;--ink:#e8ecf3;--sub:#9aa5b8;--line:#2a3344;--up:#ff6b64;--down:#6a9bff;--accent:#e8ecf3;--accent-ink:#10141c;--warn-bg:#3a2f10;--warn-ink:#ffd777}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding:20px 20px 48px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--sub)}
-.top b{color:var(--ink);font-weight:700}
-.sample{margin:14px 0 0;padding:8px 12px;border-radius:6px;background:var(--warn-bg);color:var(--warn-ink);font-size:13px}
-h1{margin:28px 0 8px;font-size:clamp(28px,5.2vw,48px);line-height:1.25;font-weight:900;letter-spacing:-.02em;max-width:22ch}
-.lead{margin:0 0 28px;color:var(--sub);max-width:60ch}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media (max-width:760px){.grid{grid-template-columns:1fr}}
-section{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 20px 12px}
-h2{margin:0 0 4px;font-size:20px;font-weight:700}
-.when{font-size:13px;color:var(--sub);margin-bottom:10px}
-.row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-top:1px solid var(--line)}
-.row .n{font-weight:500}
-.row .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
-.row .c{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:13px;font-variant-numeric:tabular-nums}
-.bar{flex:1;height:6px;background:var(--line);border-radius:3px;position:relative;overflow:hidden}
-.bar i{position:absolute;top:0;bottom:0;border-radius:3px}
-.up{color:var(--up)}.down{color:var(--down)}
-.bar .up{background:var(--up)}.bar .down{background:var(--down)}
-.txt{margin:14px 0 8px;font-size:15px}
-.txt p{margin:0 0 8px;max-width:62ch}
-table{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 10px;font-variant-numeric:tabular-nums}
-th,td{padding:7px 4px;text-align:right;border-top:1px solid var(--line)}
-th:first-child,td:first-child{text-align:left}
-th{font-weight:500;color:var(--sub);border-top:0}
-.full{margin-top:28px}
-ul.chk{margin:8px 0 12px;padding:0;list-style:none}
-ul.chk li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
-ul.chk time{font-weight:700;color:var(--sub);font-variant-numeric:tabular-nums}
-.pb{border-left:4px solid var(--accent)}
-.pb .box{min-height:84px;padding:10px 12px;border:1px dashed var(--line);border-radius:6px;font-size:15px;outline:none}
-.pb .box:focus{border-color:var(--accent)}
-.hint{font-size:12px;color:var(--sub);margin:6px 0 8px}
-footer{margin-top:28px;font-size:12px;color:var(--sub);max-width:80ch}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* VOICE work: a financial newspaper's morning market page, dense and exact
+   IDEA the printed stock-table page of a morning paper: big hanging numerals, thick rules, red up / blue down (Korean convention)
+   PICTURE large bar chart of last night's movers, US and Korea side by side, next to the index board
+   COLOUR white ground, black ink, signal red #e4002b for up, cobalt #1f5fd6 for down, one grey
+   TYPE Archivo wide 800 for numerals + Noto Sans KR for text
+   LAYOUT laptop: title strip, finding, index board left / movers right, rates tape; phone: stacked title, board, movers */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e0e0e);--ink:light-dark(#111111,#f2f2f2);--sub:light-dark(#5c5c5c,#a8a8a8);--rule:light-dark(#111111,#f2f2f2);--hair:light-dark(#dcdcdc,#2e2e2e);--zone:light-dark(#f4f4f4,#181818);--up:light-dark(#e4002b,#ff4d5e);--dn:light-dark(#1f5fd6,#5c93ff);--hl:light-dark(#fff1f3,#2a1216)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Noto Sans KR","Archivo",system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(24px,3.5vw,52px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.num{font-family:"Archivo","Noto Sans KR",sans-serif;font-stretch:112%;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.up{color:var(--up)}.dn{color:var(--dn)}.fl{color:var(--sub)}
+.top{border-bottom:6px solid var(--rule);padding-bottom:12px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 24px}
+.brand{font-size:clamp(28px,4vw,44px);line-height:1.05;margin:0;font-weight:800;letter-spacing:-.02em}
+.date{color:var(--sub);font-size:15px}
+nav.scroll{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--hair);padding:8px 0;background:var(--bg)}
+nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;padding:10px 12px;min-height:44px;border-radius:2px}
+nav a:hover,nav a:focus-visible{background:var(--zone);outline:2px solid var(--ink);outline-offset:-2px}
+@media(min-width:900px){nav.scroll{position:sticky;top:0;z-index:5}}
+h2.find{font-size:clamp(26px,3.4vw,42px);line-height:1.08;letter-spacing:-.02em;margin:22px 0 6px;text-wrap:balance;font-weight:800}
+.lede{font-size:17px;max-width:68ch;margin:0 0 22px;color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px;align-items:stretch}
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:3px solid var(--rule)}
+.cell{padding:12px 10px 12px 0;border-bottom:1px solid var(--hair)}
+.cell:nth-child(odd){padding-right:14px;border-right:1px solid var(--hair)}.cell:nth-child(even){padding-left:14px}
+.cell .k{font-size:14px;color:var(--sub);font-weight:600}
+.cell .v{font-size:clamp(24px,3vw,34px);line-height:1.1;white-space:nowrap}
+.cell .c{font-size:15px;font-weight:600;white-space:nowrap}
+.panel{border-top:3px solid var(--rule)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0 6px}
+.ph h3{margin:0;font-size:18px}.ph span{font-size:13px;color:var(--sub)}
+.movers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.mv h4{margin:6px 0 4px;font-size:14px;color:var(--sub)}
+.row{display:grid;grid-template-columns:7.2em minmax(0,1fr) 4.2em;align-items:center;gap:8px;font-size:14px;min-height:26px}
+.row .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .t{height:14px;background:var(--zone)}
+.row .b{height:100%;background:var(--up)}
+.row .p{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tape{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:28px}
+.tape div{padding:10px 12px 10px 0}
+.tape .k{font-size:13px;color:var(--sub)}.tape .v{font-size:22px;white-space:nowrap}.tape .c{font-size:14px;font-weight:600;white-space:nowrap}
+.sec{border-top:6px solid var(--rule)}
+.sec h2{font-size:clamp(24px,3vw,34px);line-height:1.1;letter-spacing:-.02em;margin:0 0 6px}
+.sec .say{color:var(--sub);margin:0 0 20px;max-width:72ch}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.story h3{font-size:19px;margin:0 0 8px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.story ul{margin:0;padding-left:1.1em}.story li{margin-bottom:8px}
+.meter{margin:10px 0 4px}
+.scale{position:relative;height:18px;background:linear-gradient(90deg,var(--dn),color-mix(in srgb,var(--dn) 25%,var(--bg)) 45%,color-mix(in srgb,var(--up) 25%,var(--bg)) 55%,var(--up))}
+.pin{position:absolute;top:-6px;width:4px;height:30px;background:var(--ink)}
+.ticks{display:flex;justify-content:space-between;font-size:13px;color:var(--sub);margin-top:4px}
+.big{font-size:clamp(40px,6vw,64px);line-height:1}
+.card{background:var(--zone);padding:16px 18px}
+.card h3{margin:0 0 4px;font-size:17px}
+.check{list-style:none;padding:0;margin:0}
+.check li{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.mark{font-weight:800;font-size:15px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--rule);font-size:13px;color:var(--sub);font-weight:600}
+td.r,th.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td small{color:var(--sub);display:block;font-size:13px}
+.flows .row{grid-template-columns:5.5em minmax(0,1fr) minmax(0,1fr) 6.2em}
+.flows .l{display:flex;justify-content:flex-end;height:16px;background:var(--zone)}
+.flows .rr{height:16px;background:var(--zone)}
+.flows .l i,.flows .rr i{display:block;height:100%}
+.flows .l i{background:var(--dn)}.flows .rr i{background:var(--up)}
+.sched{list-style:none;margin:0;padding:0}
+.sched li{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid var(--hair)}
+.sched .d{font-size:26px;line-height:1}
+.sched .d small{display:block;font-family:"Noto Sans KR",sans-serif;font-size:13px;font-weight:600;color:var(--sub);letter-spacing:0;margin-top:4px}
+.sched b{display:block;font-size:17px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:1px 7px;border:1px solid currentColor;margin-right:6px;white-space:nowrap}
+.view{background:var(--hl);border-top:6px solid var(--up)}
+.view ol{margin:0;padding-left:1.3em}.view li{margin-bottom:12px;max-width:80ch}
+.sell{color:var(--dn);font-weight:800}.buy{color:var(--up);font-weight:800}
+.note{font-size:13px;color:var(--sub)}
+footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wrap:anywhere}
+@media(max-width:900px){.hero,.two{grid-template-columns:minmax(0,1fr)}.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.movers,.three{grid-template-columns:minmax(0,1fr)}table{font-size:13px}th,td{padding:6px 4px}.sched li{grid-template-columns:4.8em minmax(0,1fr);gap:12px}.sched .d{font-size:20px}.flows .row{grid-template-columns:4.2em minmax(0,1fr) minmax(0,1fr) 5.4em;font-size:13px}.row{grid-template-columns:6em minmax(0,1fr) 3.8em;font-size:13px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top"><span><b>아침 시황 브리핑</b></span><span id="today"></span></div>
-  <div class="sample" id="sample" hidden></div>
-
-  <h1 id="headline"></h1>
-  <p class="lead" id="lead"></p>
-
-  <div class="grid">
-    <section id="us"></section>
-    <section id="kr"></section>
+<header class="band" style="padding-bottom:0">
+ <div class="wrap">
+  <div class="top">
+   <h1 class="brand">모닝 마켓 보드</h1>
+   <div class="date">2026년 11월 24일(화) 저녁 기준 · 미국 11/23(월) 마감 · 한국 11/24(화) 마감</div>
   </div>
+  <nav class="scroll" aria-label="섹션">
+   <a href="#market">시황</a><a href="#sentiment">공포·탐욕</a><a href="#macro">경제지표</a><a href="#flows">수급</a><a href="#calendar">일정</a><a href="#view">투자자 관점</a><a href="#sources">출처</a>
+  </nav>
+  <h2 class="find">젠슨 황 복귀에 나스닥100 6.9% 급등, 코스피 5,000 회복. 그러나 금리는 오히려 올랐다</h2>
+  <p class="lede">엔비디아 이사회가 사임 11일 만에 젠슨 황 CEO를 복귀시키자 엔비디아가 31.5% 폭등하며 AI·반도체 전반이 되살아났습니다. 한국도 양 시장 매수 사이드카 속에 외국인이 8거래일 만에 순매수로 돌아섰습니다. 반면 미 2년물은 8bp 뛰고 12월 FOMC 인상 확률은 100%로 올라, 반등의 질은 아직 검증 전입니다.</p>
+ </div>
+</header>
 
-  <section class="full" id="macro"></section>
-
-  <div class="grid full">
-    <section id="check"></section>
-    <section class="pb">
-      <h2>PB 코멘트</h2>
-      <div class="box" id="pbbox"></div>
-    </section>
+<section class="band" style="padding-top:0">
+ <div class="wrap hero">
+  <div>
+   <div class="board" id="board"></div>
   </div>
+  <div class="panel">
+   <div class="ph"><h3>지난밤·오늘 주요 종목 등락률</h3><span>막대 길이 = 상승률</span></div>
+   <div class="movers">
+    <div class="mv"><h4>미국 (11/23)</h4><div id="mvUS"></div></div>
+    <div class="mv"><h4>한국 (11/24)</h4><div id="mvKR"></div></div>
+   </div>
+  </div>
+ </div>
+ <div class="wrap"><div class="tape" id="tape"></div>
+ <p class="note">한국 국고채 3년물은 24일 오전 기준. 환율은 서울 외환시장 주간 종가. 미국 10년-3개월 금리차는 FRED T10Y3M 11/23 값, 10년-2년 금리차는 11/23 종가(4.948%-4.698%)로 계산했습니다(FRED T10Y2Y 최신 공개값 11/20 0.29).</p></div>
+</section>
 
-  <footer>본 자료는 투자 참고용 정보이며 투자 권유가 아닙니다. 투자 판단의 책임은 투자자 본인에게 있으며, 자료의 정확성과 완전성을 보장하지 않습니다. 게시 전 소속 회사의 심의 및 컴플라이언스 기준을 확인하세요.</footer>
-</div>
+<section class="band sec" id="market">
+ <div class="wrap">
+  <h2>시황 정리</h2>
+  <p class="say">미국은 7거래일 연속 하락을 끊은 '리더십 리스크 해소 랠리', 한국은 그 온기를 받은 수급 이벤트 성격이 강했습니다.</p>
+  <div class="two">
+   <div class="story">
+    <h3>미국 증시 (11/23 월)</h3>
+    <ul>
+     <li>엔비디아 이사회가 만장일치로 젠슨 황을 사장 겸 CEO로 즉시 복귀시켰고, 국가안보 위험이 없다고 밝혔습니다. 트럼프 대통령도 복귀를 공개 지지했습니다.</li>
+     <li>나스닥·S&amp;P500은 지난해 4월 이후 최대 일간 상승률. 필라델피아 반도체지수는 14.03% 급등했습니다.</li>
+     <li>지난주 나스닥·다우는 약 6년 만의 최대 주간 낙폭이었고, 3대 지수는 고점 대비 10% 넘게 빠지며 조정 국면, 나스닥100은 약세장 기준(-20%)에 근접해 있었습니다.</li>
+     <li>공매도 환매수와 옵션 헤지 거래가 상승폭을 키웠다는 분석. 엔비디아 거래대금은 약 1,249억 달러로 1위였습니다.</li>
+     <li>방어주(존슨앤드존슨·코카콜라·유나이티드헬스)는 소폭 하락. 자금이 기술주로 이동했습니다.</li>
+     <li>WTI는 호르무즈 해협 등으로 중동산 원유 공급이 이어진다는 관측에 3.9% 하락, 장중 80달러를 밑돌며 약 3개월 만에 최저였습니다.</li>
+     <li>하이일드 스프레드는 3.52%에서 3.76%로 오히려 확대. 신용시장 경계는 남아 있습니다.</li>
+    </ul>
+   </div>
+   <div class="story">
+    <h3>한국 증시 (11/24 화)</h3>
+    <ul>
+     <li>코스피는 3.64% 높은 4,880.16에 출발해 장중 5,065.74(+7.59%)까지 오른 뒤 5,006.03에 마감. 종가 기준 3거래일 만에 5,000선을 회복했습니다.</li>
+     <li>개장 6분 만에 코스피 매수 사이드카, 이어 코스닥에서도 발동. 양 시장 동시 발동은 10일 이후 2주 만이며 올해 사이드카는 101회째입니다.</li>
+     <li>삼성전자 +6.70%(189,400원), SK하이닉스 +6.73%(1,158,000원). 삼성전기·LG이노텍 등 기판주가 10%대, 현대차 +11.11%, 삼성SDI +13.6%.</li>
+     <li>외국인은 7거래일 연속 순매도를 멈추고 7,391억원 순매수(넥스트레이드 포함 1조124억원). 연기금은 3,024억원으로 지난달 30일 이후 최대 순매수.</li>
+     <li>개인은 2조430억원 순매도로 장 막판 매물을 내놓았고, 지수는 간신히 5,000선을 지켰습니다.</li>
+     <li>대만 9%, 일본 닛케이 3.9% 등 아시아 전반이 동반 랠리했습니다.</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="band sec" id="sentiment">
+ <div class="wrap">
+  <h2>1. 공포와 탐욕 체크</h2>
+  <p class="say">심리는 아직 '극단적 공포', 밸류에이션은 여전히 '과열'. 두 신호가 엇갈리는 구간입니다.</p>
+  <div class="three">
+   <div class="card">
+    <h3>미국 CNN 공포·탐욕</h3>
+    <div class="big num dn">17</div>
+    <div>극단적 공포 (0~25)</div>
+    <div class="meter"><div class="scale"><span class="pin" style="left:calc(17% - 2px)"></span></div><div class="ticks"><span>0 공포</span><span>50</span><span>탐욕 100</span></div></div>
+   </div>
+   <div class="card">
+    <h3>VIX (미국 변동성)</h3>
+    <div class="big num">26.60</div>
+    <div class="dn" style="font-weight:600">-25.88% 급락</div>
+    <div class="meter"><div class="scale"><span class="pin" style="left:calc(53% - 2px)"></span></div><div class="ticks"><span>10</span><span>바닥 기준선 35</span><span>50</span></div></div>
+   </div>
+   <div class="card">
+    <h3>VKOSPI (한국 변동성)</h3>
+    <div class="big num up">59.6</div>
+    <div>지수 급등에도 높은 수준 유지</div>
+    <div class="meter"><div class="scale"><span class="pin" style="left:calc(85% - 2px)"></span></div><div class="ticks"><span>10</span><span>40</span><span>70</span></div></div>
+   </div>
+  </div>
+  <div class="two" style="margin-top:28px">
+   <div>
+    <h3 style="margin:0 0 8px">미국·한국 과열도 (밸류에이션)</h3>
+    <div class="scroll"><table>
+     <thead><tr><th>지표</th><th class="r">미국</th><th class="r">한국</th><th>판단</th></tr></thead>
+     <tbody>
+      <tr><td>공포·탐욕(심리)</td><td class="r">17</td><td class="r">VKOSPI 59.6</td><td>양국 모두 공포</td></tr>
+      <tr><td>시가총액/GDP</td><td class="r">275%</td><td class="r">147%</td><td>미국 역사적 극단, 한국 고평가 구간</td></tr>
+      <tr><td>시가총액/M2</td><td class="r">약 3.9배</td><td class="r">약 0.9배</td><td>미국은 유동성 대비 고평가</td></tr>
+     </tbody>
+    </table></div>
+    <p class="note">미국 시총/GDP는 11/18 시장가 기준 추정치(공식 2분기 288%). 한국은 코스피 시총 기준 11/23 수치이며, 24일 6.3% 상승을 반영하면 약 156%. 시총/M2는 같은 수치로 직접 계산한 값입니다.</p>
+   </div>
+   <div>
+    <h3 style="margin:0 0 8px">바닥 신호 점검 (나스닥100 기준)</h3>
+    <ul class="check">
+     <li><span class="mark up">충족</span><span>CNN 공포·탐욕 25 이하 극단적 공포</span><span class="num">17</span></li>
+     <li><span class="mark up">근접</span><span>나스닥100 고점 대비 -20% 약세장 기준</span><span>직전 근접</span></li>
+     <li><span class="mark dn">미충족</span><span>VIX 35 돌파 후 꺾임</span><span class="num">26.60</span></li>
+     <li><span class="mark up">진행</span><span>헤지펀드 공매도 환매수(숏커버)</span><span>23일 확인</span></li>
+    </ul>
+    <p class="note">VIX는 35 기준선에 닿지 않은 채 꺾였습니다. 투매형 바닥보다는 이벤트형 반등에 가깝다는 의미입니다.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="band sec" id="macro">
+ <div class="wrap">
+  <h2>2. 경제지표</h2>
+  <p class="say">미국과 한국 모두 성장은 강하고 물가는 목표를 웃돕니다. 양국 중앙은행이 '인상' 쪽에 서 있는 이유입니다.</p>
+  <div class="scroll"><table class="stack">
+   <thead><tr><th>지표</th><th>미국</th><th>한국</th><th>읽는 법</th></tr></thead>
+   <tbody id="macroBody"></tbody>
+  </table></div>
+  <h3 style="margin:28px 0 8px">OECD 경기선행지수 순환변동치 (CLI, 진폭조정, 장기평균 = 100)</h3>
+  <div class="scroll"><table>
+   <thead><tr><th>국가</th><th class="r">1월</th><th class="r">2월</th><th class="r">3월</th><th class="r">4월</th><th class="r">5월</th><th class="r">6월</th><th class="r">7월</th><th class="r">8월</th><th class="r">9월</th><th class="r">10월</th></tr></thead>
+   <tbody id="cliBody"></tbody>
+  </table></div>
+  <p class="note">2026년 월별 수치, OECD Data Explorer(DF_CLI, 진폭조정)와 같은 시리즈를 FRED에서 가져왔습니다(한국 KORLOLITOAASTSAM 11/16 갱신, 미국 USALOLITOAASTSAM). 미국 1~5월은 이번 조회에서 확인하지 못해 비웠습니다. 빨간색은 전월 대비 상승, 파란색은 하락입니다.</p>
+ </div>
+</section>
+
+<section class="band sec" id="flows">
+ <div class="wrap">
+  <h2>3. 수급</h2>
+  <p class="say">외국인은 삼성전자를 4,224억원 사고 SK하이닉스는 1,351억원 팔았습니다. 같은 반도체 안에서도 갈아타기가 뚜렷합니다.</p>
+  <div class="two">
+   <div>
+    <h3 style="margin:0 0 8px">투자자별 순매수 (억원, 11/24)</h3>
+    <div class="flows" id="flowBars"></div>
+    <p class="note">파란색 = 순매도, 빨간색 = 순매수. 외국인 수치는 매체별로 7,255억~7,392억원으로 집계 시점 차이가 있습니다.</p>
+   </div>
+   <div>
+    <h3 style="margin:0 0 8px">미국 액티브 ETF: ARK Invest 매매</h3>
+    <div class="scroll"><table>
+     <thead><tr><th>종목</th><th>방향</th><th class="r">규모</th><th>기간</th></tr></thead>
+     <tbody id="arkBody"></tbody>
+    </table></div>
+    <p class="note">ARK는 급락장에서 신규 상장 대형주(앤트로픽·스페이스X)와 AMD를 사고, 엔비디아는 하루 전 급락 구간에서 줄였습니다.</p>
+   </div>
+  </div>
+  <div class="two" style="margin-top:28px">
+   <div>
+    <h3 style="margin:0 0 8px">외국인 순매수·순매도 상위 (코스피, 억원)</h3>
+    <div class="scroll"><table><thead><tr><th>순매수</th><th class="r">금액</th><th>순매도</th><th class="r">금액</th></tr></thead><tbody id="forBody"></tbody></table></div>
+   </div>
+   <div>
+    <h3 style="margin:0 0 8px">기관 순매수·순매도 상위 (코스피, 억원)</h3>
+    <div class="scroll"><table><thead><tr><th>순매수</th><th class="r">금액</th><th>순매도</th><th class="r">금액</th></tr></thead><tbody id="insBody"></tbody></table></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="band sec" id="calendar">
+ <div class="wrap">
+  <h2>4. 일정</h2>
+  <p class="say">이번 주 승부처는 25일 밤 미국 10월 PCE와 26일 한국 금통위입니다. 시각은 모두 한국시간.</p>
+  <ul class="sched" id="sched"></ul>
+ </div>
+</section>
+
+<section class="band view" id="view">
+ <div class="wrap">
+  <h2 style="font-size:clamp(24px,3vw,34px);margin:0 0 10px">투자자 관점: 추격 매수보다 '반등 때 정리, 눌림에 분할'</h2>
+  <ol>
+   <li><span class="sell">매도 관점</span> 하루 31% 오른 엔비디아, 20%대 급등한 마이크론·코어위브·SK하이닉스 ADR 같은 고베타 반도체는 보유 중이라면 이번 반등에서 일부 차익 실현이 유리합니다. 외국인도 오늘 SK하이닉스·SK스퀘어를 순매도 상위에 올렸습니다.</li>
+   <li><span class="sell">매도 관점</span> 금리 민감 성장주의 레버리지 포지션. 주가가 오르자 미 2년물이 8bp 뛰었고 12월 FOMC 인상은 100% 반영, 0.5%p 빅스텝 가능성까지 살아 있습니다. 하이일드 스프레드 확대도 경고 신호입니다.</li>
+   <li><span class="buy">분할 매수 관점</span> 공포·탐욕 17, 나스닥100 약세장 기준 근접은 중기 저점 영역의 전형적 모습입니다. 다만 VIX 35 미충족이라 1차 분할(목표 비중의 3분의 1 이내)에 그치고, 나머지는 25일 PCE와 26일 금통위 결과 뒤로 미루는 편이 안전합니다.</li>
+   <li><span class="buy">매수 우위</span> 외국인과 기관이 함께 산 삼성전자·삼성전기·삼성SDI, 외국인이 꾸준히 담은 전력기기(효성중공업·LS ELECTRIC). 12월 11일 코스피200 편입 종목(대덕전자·효성·일진전기 등)은 반영일 전 패시브 매수 수혜를 볼 수 있습니다.</li>
+  </ol>
+  <p class="note">위 내용은 공개 데이터에 기반한 의견이며 매매 결정과 책임은 투자자 본인에게 있습니다.</p>
+ </div>
+</section>
+
+<footer class="band sec" id="sources">
+ <div class="wrap">
+  <h2 style="font-size:24px">출처</h2>
+  <ul>
+   <li><a href="https://www.blockmedia.co.kr/archives/1169660">블록미디어 뉴욕증시 마감(11/23)</a> · <a href="https://www.seoul.co.kr/news/economy/securities/2026/11/24/20261124500006">서울신문 서울데이터랩</a> · <a href="https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202611240018">한국경제TV(나스닥100·SOX)</a></li>
+   <li><a href="https://biz.sbs.co.kr/article/20000348404">SBS Biz(미 국채·WTI)</a> · <a href="https://www.freezine.co.kr/news/articleView.html?idxno=18643">프리진경제(VIX·하이일드)</a> · <a href="https://fnnews.com/news/202611241550095595">파이낸셜뉴스(페드워치)</a></li>
+   <li><a href="https://www.namdonews.com/news/articleView.html?idxno=930305">남도일보 마감시황</a> · <a href="https://m.news.nate.com/view/20261124n25853">뉴스1 수급</a> · <a href="https://www.newstong.co.kr/view3.aspx?seq=14837389">연합뉴스 외국인 순매매 표</a> · <a href="https://www.newstong.co.kr/view3.aspx?seq=14837390">기관 순매매 표</a></li>
+   <li><a href="https://weekly.hankooki.com/news/articleView.html?idxno=7195497">주간한국(CNN 공포·탐욕, VKOSPI)</a> · <a href="https://www.hanyangeconomy.com/news/articleView.html?idxno=10720">한양경제(환율)</a> · <a href="https://www.investchosun.com/site/data/html_dir/2026/11/24/2026112480056.html">인베스트조선(국고채)</a></li>
+   <li><a href="https://www.indexergo.com/series/?frq=D&amp;idxDetail=20200">인덱서고 코스피 시총</a> · <a href="https://www.thetrading.tools/buffett-indicator">미국 버핏지수</a> · <a href="https://alfred.stlouisfed.org/series?seid=M2SL">FRED M2</a> · <a href="https://fred.stlouisfed.org/series/T10Y3M">FRED T10Y3M</a> · <a href="https://fred.stlouisfed.org/series/T10Y2Y">FRED T10Y2Y</a> · <a href="https://data-explorer.oecd.org/vis?df%5Bag%5D=OECD.SDD.STES&amp;df%5Bds%5D=dsDisseminateFinalDMZ&amp;df%5Bid%5D=DSD_STES%40DF_CLI&amp;df%5Bvs%5D=4.1&amp;dq=.M.LI...AA...H&amp;lo=10&amp;lom=LASTNPERIODS">OECD CLI</a> · <a href="https://fred.stlouisfed.org/series/KORLOLITOAASTSAM">FRED 한국 CLI</a> · <a href="https://alfred.stlouisfed.org/series?seid=USALOLITOAASTSAM">FRED 미국 CLI</a> · <a href="https://www.greened.kr/news/articleView.html?idxno=354616">한국은행 M2</a></li>
+   <li><a href="https://finance.yahoo.com/markets/stocks/articles/cathie-wood-sells-107-million-153242383.html">Yahoo Finance ARK</a> · <a href="https://www.investing.com/news/company-news/cathie-woods-ark-adds-crispr-stock-trims-3iq-ether-93CH-5046812">Investing.com ARK 일일매매</a> · <a href="https://www.martincid.com/business/cathie-wood-ark-buys-anthropic-stock-ipo-slide/">ARK 앤트로픽 매수</a></li>
+   <li><a href="https://www.thefairnews.co.kr/news/articleView.html?idxno=95083">더페어 주간전망</a> · <a href="https://www.fnnews.com/news/202611211105346704">파이낸셜뉴스 금통위</a> · <a href="https://www.sidae.com/article/2026112313401865961">시대일보 FOMC</a> · <a href="https://news.bizwatch.co.kr/article/market/2026/11/19/0032">비즈워치 코스피200 정기변경</a></li>
+  </ul>
+ </div>
+</footer>
 
 <script>
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(render).catch(()=>{document.getElementById('headline').textContent='데이터를 불러오지 못했습니다.'});
-function render(DATA){
-const f=(n)=>n.toLocaleString("ko-KR",{minimumFractionDigits:2,maximumFractionDigits:2});
-const cls=(p)=>p>0?"up":p<0?"down":"";
-const sg=(p)=>(p>0?"▲ ":p<0?"▼ ":"")+Math.abs(p).toFixed(2)+"%";
-function bar(p){const w=Math.min(Math.abs(p)/3,1)*50;const s=p>=0?`left:50%;width:${w}%`:`right:50%;width:${w}%`;return `<span class="bar"><i class="${cls(p)}" style="${s}"></i></span>`}
-function rows(list,fmt){return list.map(([n,v,p])=>`<div class="row"><span class="n">${n}</span><span class="v">${fmt?v:f(v)}</span><span class="c ${cls(p)}">${bar(p)}<span>${sg(p)}</span></span></div>`).join("")}
-function paras(a){return `<div class="txt">${a.map(t=>`<p>${t}</p>`).join("")}</div>`}
-const d=new Date();
-document.getElementById("today").textContent=d.toLocaleDateString("ko-KR",{year:"numeric",month:"long",day:"numeric",weekday:"short"});
-document.getElementById("headline").textContent=DATA.headline;
-document.getElementById("lead").textContent=DATA.lead;
-document.getElementById("us").innerHTML=`<h2>미국 증시</h2><div class="when">${DATA.us.when}</div>${rows(DATA.us.idx)}${paras(DATA.us.text)}`;
-const flow=!DATA.kr.flow?"":`<table><tr><th>투자자별 순매수(억원)</th><th>코스피</th><th>코스닥</th></tr>${DATA.kr.flow.map(r=>`<tr><td>${r[0]}</td><td class="${r[1][0]=="+"?"up":"down"}">${r[1]}</td><td class="${r[2][0]=="+"?"up":"down"}">${r[2]}</td></tr>`).join("")}</table>`;
-document.getElementById("kr").innerHTML=`<h2>한국 증시</h2><div class="when">${DATA.kr.when}</div>${rows(DATA.kr.idx)}${flow}${paras(DATA.kr.text)}`;
-document.getElementById("macro").innerHTML=`<h2>환율·금리·원자재</h2>${rows(DATA.macro,true)}`;
-document.getElementById("check").innerHTML=`<h2>오늘의 체크포인트</h2><ul class="chk">${DATA.check.map(([t,x])=>`<li><time>${t}</time><span>${x}</span></li>`).join("")}</ul>`;
-document.getElementById("pbbox").textContent=DATA.comment||"오늘의 코멘트가 아직 없습니다.";
-if(DATA.sample){const x=document.getElementById("sample");x.hidden=false;x.textContent="샘플 데이터입니다. 실제 시세가 아닙니다."}
+{
+const fmt=(c,u='%')=>{const s=c>0?'▲':c<0?'▼':'';const cls=c>0?'up':c<0?'dn':'fl';return `<span class="${cls}">${s}${Math.abs(c).toLocaleString('ko-KR',{maximumFractionDigits:2})}${u}</span>`};
+const board=[
+ ['나스닥100','26,746.10',6.86,'미국'],['S&P500','7,237.20',4.73,'미국'],
+ ['나스닥 종합','24,089.56',6.51,'미국'],['다우존스','49,595.31',3.01,'미국'],
+ ['코스피','5,006.03',6.32,'한국'],['코스닥','665.88',4.79,'한국'],
+ ['필라델피아 반도체','9,588.10',14.03,'미국'],['VIX','26.60',-25.88,'미국']
+];
+document.getElementById('board').innerHTML=board.filter(b=>b[1]).map(b=>`<div class="cell"><div class="k">${b[3]} · ${b[0]}</div><div class="v num">${b[1]}</div><div class="c">${fmt(b[2])}</div></div>`).join('');
+const us=[['엔비디아',31.48],['SK하이닉스 ADR',20.00],['코어위브',20],['마이크론',19.04],['TSMC ADR',14.08],['오라클',12.43],['테슬라',11.46],['메타',6.55],['알파벳',6.3],['AMD',6],['아마존',3.5],['애플',1.9],['마이크로소프트',1.7]];
+const kr=[['삼성SDI',13.6],['현대차',11.11],['LG이노텍',10.92],['삼성전기',10.28],['삼성생명',9.78],['한화에어로',9.22],['LG에너지솔루션',7.9],['삼성물산',7.71],['SK하이닉스',6.73],['삼성전자',6.70],['KB금융',5.36],['SK스퀘어',5.2],['HD현대중공업',5.03]];
+const mx=32;
+const bars=a=>a.map(([n,p])=>`<div class="row"><span class="n" title="${n}">${n}</span><span class="t"><span class="b" style="display:block;width:${Math.min(100,p/mx*100)}%"></span></span><span class="p up">+${p.toFixed(2)}%</span></div>`).join('');
+document.getElementById('mvUS').innerHTML=bars(us);
+document.getElementById('mvKR').innerHTML=bars(kr);
+const tape=[
+ ['미국 10년물','4.948%','+3bp',1],['미국 2년물','4.698%','+8bp',1],['미국 기준금리','3.75~4.00%','12월 인상 100%',0],
+ ['미국 10년-2년 금리차','0.25%p','축소, 11/20 0.29',-1],['미국 10년-3개월 금리차','0.55%p','11/20 0.60 → 축소',-1],
+ ['한국 10년물','3.81%','-2bp',-1],['한국 3년물','3.62%','오전 기준',0],['한국 기준금리','3.00%','26일 결정',0],
+ ['원/달러','1,342.4원','-3.5원',-1],['WTI','$80.17','-3.88%',-1],['금','3%대 상승','11/23',1],['비트코인','$60,397','-1.25%',-1]
+];
+document.getElementById('tape').innerHTML=tape.map(t=>`<div><div class="k">${t[0]}</div><div class="v num">${t[1]}</div><div class="c ${t[3]>0?'up':t[3]<0?'dn':'fl'}">${t[2]}</div></div>`).join('');
+const macro=[
+ ['경기선행지수 순환변동치 (OECD CLI)','10월 100.96, 전월 대비 +0.03. 6월 이후 4개월 연속 상승','10월 101.98, 전월 대비 -0.24. 7월 102.53 정점 후 3개월 연속 하락','100 위는 장기 추세 상회. 미국은 완만한 확장, 한국은 정점 통과 후 둔화 국면'],
+ ['경제성장률','3분기 3.4%(전기 대비 연율, 속보)','3분기 1.0%(전기 대비), 전년 대비 3.4%','양국 모두 예상 상회. 한국 연간 3.6% 이상 확보'],
+ ['CPI','10월 +0.4%(전월 대비). 9월 전년 대비 3.7%','10월 2.8%(전년 대비)','미국은 셧다운 영향으로 10월 전년비 미발표'],
+ ['근원 CPI','10월 +0.3%(전월 대비), 3개월 연속 0.3%','10월 2.8%(식료품·에너지 제외)','한국 근원물가가 목표 2%를 3개월째 0.8%p 상회'],
+ ['PCE / 근원 PCE','9월 3.6% / 3.1%(전년 대비)','·','10월 PCE는 25일 22:30 발표'],
+ ['국채 10년물','4.948%','3.81%','미 10년물 장중 4.98%까지, 5% 재위협'],
+ ['국채 단기물','2년물 4.698%','3년물 3.62%(오전)','단기물이 더 크게 올라 곡선이 평탄해짐'],
+ ['장단기 금리차','10년-2년 0.25%p, 10년-3개월 0.55%p(11/23)','10년-3년 약 0.19%p','미국 10년-3개월은 11/17 0.77에서 1주 만에 0.22%p 축소. 침체 신호(역전)는 아직 아님'],
+ ['기준금리','3.75~4.00%','3.00%','한미 금리차 상단 기준 1.00%p'],
+ ['실업률','10월 4.1%','10월 2.0%(계절조정 2.5%)','한국 10월 기준 역대 최저'],
+ ['시간당 임금','10월 +0.4%(전월), +3.1%(전년), 38.00달러','·','예상치(0.3%, 2.9%) 상회'],
+ ['고용','비농업 +16.5만 명(예상 5.9만)','취업자 +13.9만 명(전년 대비)','미국 8·9월도 합계 8.4만 명 상향'],
+ ['시가총액 / M2','약 3.9배','약 0.9배(코스피)','미 M2 9월 23.41조 달러, 한 M2 9월 4,283.9조원'],
+ ['시가총액 / GDP','275%(11/18 추정), 2분기 공식 288%','147.18%(코스피, 11/23)','미국은 1947년 이후 최고 구간']
+];
+const cli=[['한국',[100.756,101.156,101.572,101.963,102.289,102.492,102.528,102.419,102.223,101.978]],['미국',[null,null,null,null,null,100.719,100.818,100.887,100.931,100.957]]];
+document.getElementById('cliBody').innerHTML=cli.map(([n,a])=>`<tr><td><b>${n}</b></td>${a.map((v,i)=>{if(v===null)return '<td class="r fl">·</td>';const p=a[i-1];const c=p==null?'':v>p?'up':v<p?'dn':'';return `<td class="r ${c}">${v.toFixed(2)}</td>`}).join('')}</tr>`).join('');
+document.getElementById('macroBody').innerHTML=macro.map(m=>`<tr><td><b>${m[0]}</b></td><td>${m[1]}</td><td>${m[2]}</td><td><small>${m[3]}</small></td></tr>`).join('');
+const flows=[['코스피 외국인',7391],['코스피 기관',8692],['└ 연기금',3024],['코스피 기타법인',4483],['코스피 개인',-20430],['코스닥 외국인',1176],['코스닥 기관',2064],['코스닥 개인',-3077]];
+const fm=21000;
+document.getElementById('flowBars').innerHTML=flows.map(([n,v])=>`<div class="row"><span class="n">${n}</span><span class="l"><i style="width:${v<0?Math.abs(v)/fm*100:0}%"></i></span><span class="rr"><i style="width:${v>0?v/fm*100:0}%"></i></span><span class="p ${v>0?'up':'dn'}">${v>0?'+':''}${v.toLocaleString('ko-KR')}</span></div>`).join('');
+const ark=[['앤트로픽(ANT)','매수','약 1억4,600만 달러','상장 후 2거래일'],['스페이스X(SPCX)','매수','약 7,440만 달러','주간'],['AMD','매수','약 2,100만 달러','주간'],['엔비디아(NVDA)','매도','약 1억700만 달러','주간'],['크리스퍼(CRSP)','매수','402만 달러','11/23 ARKK'],['3IQ 이더 스테이킹','매도','93만 달러','11/23 ARKW·ARKF']];
+document.getElementById('arkBody').innerHTML=ark.map(a=>`<tr><td>${a[0]}</td><td class="${a[1]==='매수'?'up':'dn'}"><b>${a[1]}</b></td><td class="r">${a[2]}</td><td>${a[3]}</td></tr>`).join('');
+const fb=[['삼성전자',4223.9],['삼성전기',638.0],['삼성전자우',568.4],['삼성SDI',332.7],['기아',247.3],['삼성에스디에스',199.5],['현대차',195.3],['효성중공업',180.5],['LG씨엔에스',170.6],['두산에너빌리티',164.8]];
+const fs=[['SK하이닉스',1351.2],['SK스퀘어',498.6],['에이피알',155.0],['이수페타시스',114.1],['두산',108.3],['HD현대일렉트릭',99.1],['SK',94.5],['KT&amp;G',92.2],['LG에너지솔루션',91.7],['현대모비스',88.1]];
+const ib=[['삼성전자',2230.2],['삼성SDI',1031.3],['삼성전기',936.6],['현대차',547.7],['LG전자',544.5],['SK스퀘어',352.1],['현대모비스',279.7],['LG에너지솔루션',279.3],['두산',199.7],['현대오토에버',196.8]];
+const is=[['삼성바이오로직스',137.1],['이수페타시스',91.4],['SK이노베이션',73.7],['삼양식품',73.1],['한국전력',64.3],['산일전기',63.5],['GS',57.5],['S-Oil',53.5],['제주항공',51.2],['GS건설',49.7]];
+const pair=(b,s)=>b.map((x,i)=>`<tr><td>${x[0]}</td><td class="r up">${x[1].toLocaleString('ko-KR',{minimumFractionDigits:1})}</td><td>${s[i][0]}</td><td class="r dn">${s[i][1].toLocaleString('ko-KR',{minimumFractionDigits:1})}</td></tr>`).join('');
+document.getElementById('forBody').innerHTML=pair(fb,fs);
+document.getElementById('insBody').innerHTML=pair(ib,is);
+const sched=[
+ ['11/24','화 밤','미국 실적','베스트바이·달러트리 개장 전, 아날로그디바이스 21:00. HP·델은 장 마감 후, 델 컨퍼런스콜 25일 06:30'],
+ ['11/25','수 22:30','미국 지표','10월 PCE·근원 PCE, 3분기 GDP 잠정치, 내구재 주문, 주간 실업수당 청구(하루 앞당겨 발표). 예상을 웃돌면 12월 빅스텝 관측 강화'],
+ ['11/26','목','한국 금통위','올해 마지막 기준금리 결정. 현 3.00%, 채권 종사자 54%가 인상(3.25%) 예상, 증권사 다수 인상 전망. 수정 점도표 공개'],
+ ['11/26','목','미국 휴장','추수감사절 휴장'],
+ ['11/27','금','미국 조기폐장','현지 13:00 조기 폐장(한국 28일 03:00). 블랙프라이데이부터 30일 사이버먼데이까지 연말 쇼핑 시즌'],
+ ['12/10','목 새벽','FOMC','12월 8~9일 회의 결과. 페드워치 인상 확률 100%, 주요 IB 10곳 모두 인상 전망. 월러 이사는 0.5%p 가능성 언급'],
+ ['12/11','금','지수 정기변경','코스피200 편입: 두산퓨얼셀·삼아알미늄·한국쉘석유·PI첨단소재·가온전선·일진전기·대덕전자·효성·서울보증보험·현대지에프홀딩스·SK네트웍스. 편출: 지역난방공사·OCI·대한유화·TKG휴켐스·코스모화학·아세아·율촌화학·SK아이이테크놀로지·한화머시너리앤서비스홀딩스·영풍·한샘·대상. 코스닥150 16종목 교체(대한광통신·동국제약 등 편입)']
+];
+document.getElementById('sched').innerHTML=sched.map(s=>`<li><div class="d num">${s[0]}<small>${s[1]}</small></div><div><b><span class="tag">${s[2]}</span></b>${s[3]}</div></li>`).join('');
 }
 </script>
 </body>
