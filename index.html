@@ -204,25 +204,26 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
      <thead><tr><th>지표</th><th class="r">미국</th><th class="r">한국</th><th>판단</th></tr></thead>
      <tbody>
       <tr><td>공포·탐욕(심리)</td><td class="r">17</td><td class="r">VKOSPI 59.6</td><td>양국 모두 공포</td></tr>
-      <tr><td>주가수익비율 Forward P/E</td><td class="r"><button type="button" class="ind pe" data-p="sp" aria-controls="peBox">S&amp;P500</button> 17.1배<br><button type="button" class="ind pe" data-p="ndx" aria-controls="peBox">나스닥100</button> 18.7배<br><small>MSCI USA 18.7배(10/30)</small></td><td class="r"><button type="button" class="ind pe" data-p="ks" aria-controls="peBox">코스피</button> 3.75배<br><small>(11/13, 코스피200 대체)</small><br><small>MSCI Korea 4.0배(10/30)</small></td><td>미국은 10년 평균(19.1배) 아래. 한국은 사상 최저권(이익 정점 우려 반영)</td></tr>
-      <tr><td>주가장부비율(P/B)</td><td class="r">S&amp;P500 5.0배<br>나스닥100 9.2배</td><td class="r">코스피200 1.30배</td><td>미국은 자산 대비 고평가 유지, 한국은 1배 근처</td></tr>
+      <tr><td>주가수익비율 Forward P/E</td><td class="r"><button type="button" class="ind pe" data-p="sp" aria-controls="peBox">S&amp;P500</button> 17.1배<br><button type="button" class="ind pe" data-p="ndx" aria-controls="peBox">NASDAQ 100</button> 18.7배<br><small>MSCI USA 18.7배(10/30)</small></td><td class="r"><button type="button" class="ind pe" data-p="ks" aria-controls="peBox">코스피</button> 3.75배<br><small>(11/13, 코스피200 대체)</small><br><small>MSCI Korea 4.0배(10/30)</small></td><td>미국은 10년 평균(19.1배) 아래. 한국은 사상 최저권(이익 정점 우려 반영)</td></tr>
+      <tr><td>주가장부비율(P/B)</td><td class="r">S&amp;P500 5.0배<br>NASDAQ 100 9.2배</td><td class="r">코스피200 1.30배</td><td>미국은 자산 대비 고평가 유지, 한국은 1배 근처</td></tr>
       <tr><td>시가총액/GDP</td><td class="r">221.7%</td><td class="r">147%</td><td>미국 상당한 고평가(GuruFocus), 한국 고평가 구간</td></tr>
       <tr><td>시가총액/M2</td><td class="r">약 3.1배</td><td class="r">약 0.9배</td><td>미국은 유동성 대비 고평가</td></tr>
      </tbody>
     </table></div>
-    <p class="note">Forward P/E(12개월 선행): S&amp;P500은 FactSet Earnings Insight(11/20 보고서, 5년 평균 19.8·10년 평균 19.1), 나스닥100은 XTB 집계(11/17), MSCI USA·MSCI Korea는 MSCI 지수 팩트시트(10/30), 코스피는 에프앤가이드 기준 보도(11/13, LS증권·헤럴드경제. 메리츠증권 집계 11/4 3.99배). 코스피200 선행 P/E는 공식 수치를 찾지 못해 코스피 전체 값으로 대신했습니다. 매체마다 이익 추정치가 달라 같은 날도 S&amp;P500이 17~19배로 차이가 납니다. 11/23 미국 반등(+6% 안팎)과 11/24 코스피 급등은 아직 반영 전이라 실제 배수는 이보다 조금 높습니다. P/B: S&amp;P500은 ChartRow(11/12), 나스닥100은 iShares 나스닥100 ETF 기준(11/15), 코스피200은 한국거래소(11/23). 미국 시총/GDP는 GuruFocus 버핏지수(11/18), 한국은 코스피 시총 기준 11/23(24일 상승 반영 시 약 156%). 시총/M2는 같은 수치로 직접 계산. </p>
+    <p class="note">Forward P/E(12개월 선행): S&amp;P500은 FactSet Earnings Insight(11/20 보고서, 5년 평균 19.8·10년 평균 19.1), NASDAQ 100은 XTB 집계(11/17), MSCI USA·MSCI Korea는 MSCI 지수 팩트시트(10/30), 코스피는 에프앤가이드 기준 보도(11/13, LS증권·헤럴드경제. 메리츠증권 집계 11/4 3.99배). 코스피200 선행 P/E는 공식 수치를 찾지 못해 코스피 전체 값으로 대신했습니다. 매체마다 이익 추정치가 달라 같은 날도 S&amp;P500이 17~19배로 차이가 납니다. 11/23 미국 반등(+6% 안팎)과 11/24 코스피 급등은 아직 반영 전이라 실제 배수는 이보다 조금 높습니다. P/B: S&amp;P500은 ChartRow(11/12), NASDAQ 100은 iShares NASDAQ 100 ETF 기준(11/15), 코스피200은 한국거래소(11/23). 미국 시총/GDP는 GuruFocus 버핏지수(11/18), 한국은 코스피 시총 기준 11/23(24일 상승 반영 시 약 156%). 시총/M2는 같은 수치로 직접 계산. </p>
     <div class="chartbox" id="peBox">
      <div class="ph"><h3 id="peTitle">Forward P/E 15년 추이</h3><span>단위: 배</span></div>
-     <div class="petabs" role="group" aria-label="지수 선택"><button type="button" class="ind pe" data-p="sp">S&amp;P500</button><button type="button" class="ind pe" data-p="ndx">나스닥100</button><button type="button" class="ind pe" data-p="ks">코스피</button></div>
+     <div class="petabs" role="group" aria-label="지수 선택"><button type="button" class="ind pe" data-p="sp">S&amp;P500</button><button type="button" class="ind pe" data-p="ndx">NASDAQ 100</button><button type="button" class="ind pe" data-p="ks">코스피</button></div>
+     <div class="legend" id="peLegend"></div>
      <div class="fig" id="peFig"><svg id="peSvg" role="img" aria-label="Forward P/E 15년 추이 그래프"></svg></div>
      <p class="note" id="peNote"></p>
     </div>
    </div>
    <div>
-    <h3 style="margin:0 0 8px">바닥 신호 점검 (나스닥100 기준)</h3>
+    <h3 style="margin:0 0 8px">바닥 신호 점검 (NASDAQ 100 기준)</h3>
     <ul class="check">
      <li><span class="mark up">충족</span><span>CNN 공포·탐욕 25 이하 극단적 공포</span><span class="num">17</span></li>
-     <li><span class="mark up">근접</span><span>나스닥100 고점 대비 -20% 약세장 기준</span><span>직전 근접</span></li>
+     <li><span class="mark up">근접</span><span>NASDAQ 100 고점 대비 -20% 약세장 기준</span><span>직전 근접</span></li>
      <li><span class="mark dn">미충족</span><span>VIX 35 돌파 후 꺾임</span><span class="num">26.60</span></li>
      <li><span class="mark up">진행</span><span>헤지펀드 공매도 환매수(숏커버)</span><span>23일 확인</span></li>
     </ul>
@@ -416,13 +417,13 @@ const svg=document.getElementById('chSvg'),fig=document.getElementById('chFig');
 let cur='cli';
 const cols=()=>{const cs=getComputedStyle(document.body);return [cs.getPropertyValue('--up').trim()||'#e4002b',cs.getPropertyValue('--dn').trim()||'#1f5fd6']};
 const drawTo=(d,svg,fig)=>{if(!d)return;const W=fig.clientWidth,H=fig.clientHeight;if(!W)return;
- const pl=44,pr=64,pt=18,pb=34,iw=W-pl-pr,ih=H-pt-pb;const vals=d.s.flatMap(x=>x[1]).filter(v=>v!=null).concat(d.ref!=null?[d.ref]:[]);
+ const R=d.r||[];const pl=44,pr=R.length?96:64,pt=18,pb=34,iw=W-pl-pr,ih=H-pt-pb;const vals=d.s.filter((x,j)=>!R.includes(j)).flatMap(x=>x[1]).filter(v=>v!=null).concat(d.ref!=null?[d.ref]:[]);
  let lo=Math.min(...vals),hi=Math.max(...vals);const pad=(hi-lo)*0.12||1;lo-=pad;hi+=pad;
- const n=d.x.length,X=i=>pl+(n===1?iw/2:i*iw/(n-1)),Y=v=>pt+(hi-v)/(hi-lo)*ih;const c=cols();
- let o='';for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4;o+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end" font-size="12" fill="currentColor" opacity=".7">${v.toFixed(Math.abs(hi-lo)<3?2:1)}</text>`}
+ const n=d.x.length,X=i=>pl+(n===1?iw/2:i*iw/(n-1)),Y1=v=>pt+(hi-v)/(hi-lo)*ih;let Y=Y1;const c=cols();let lo2=0,hi2=1;if(R.length){const v2=d.s.filter((x,j)=>R.includes(j)).flatMap(x=>x[1]).filter(v=>v!=null);lo2=Math.min(...v2);hi2=Math.max(...v2);const p2=(hi2-lo2)*0.12||1;lo2-=p2;hi2+=p2}const Y2=v=>pt+(hi2-v)/(hi2-lo2)*ih;
+ let o='';for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4;o+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end" font-size="12" fill="currentColor" opacity=".7">${v.toFixed(Math.abs(hi-lo)<3?2:1)}</text>`;if(R.length){const v2=lo2+(hi2-lo2)*k/4;o+=`<text x="${W-4}" y="${Y(v)+4}" text-anchor="end" font-size="12" fill="${c[1]}" opacity=".85">${v2.toFixed(0)}</text>`}}
  if(d.ref!=null)o+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(d.ref)}" y2="${Y(d.ref)}" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity=".55"/>`;
  const step=W<520?Math.ceil(n/4):Math.ceil(n/8);d.x.forEach((l,i)=>{if(i===n-1||(i%step===0&&X(n-1)-X(i)>40))o+=`<text x="${X(i)}" y="${H-10}" text-anchor="middle" font-size="12" fill="currentColor" opacity=".7">${l}</text>`});
- d.s.forEach(([nm,a],j)=>{const col=c[j%2];
+ d.s.forEach(([nm,a],j)=>{const col=c[j%2];Y=R.includes(j)?Y2:Y1;
   if(d.bar){const bw=Math.max(3,iw/n/(d.s.length+1));a.forEach((v,i)=>{if(v==null)return;const x=X(i)-bw*d.s.length/2+j*bw,y0=Y(0),y=Y(v);o+=`<rect x="${x}" y="${Math.min(y,y0)}" width="${bw-1}" height="${Math.abs(y0-y)}" fill="${col}"/>`})}
   else{let path='',pen=false;a.forEach((v,i)=>{if(v==null){if(!d.join)pen=false;return}path+=(pen?'L':'M')+X(i).toFixed(1)+','+Y(v).toFixed(1);pen=true});o+=`<path d="${path}" fill="none" stroke="${col}" stroke-width="2.5"/>`;a.forEach((v,i)=>{if(v!=null)o+=`<circle cx="${X(i)}" cy="${Y(v)}" r="${n>14?2:3}" fill="${col}"><title>${nm} ${d.x[i]}: ${v}</title></circle>`})}
   let li=-1;a.forEach((v,i)=>{if(v!=null)li=i});if(li>=0)o+=`<text x="${X(li)+6}" y="${Y(a[li])+4+(j?12:-4)}" font-size="13" font-weight="700" fill="${col}">${a[li]}</text>`});
@@ -436,13 +437,13 @@ const ro=new ResizeObserver(draw);ro.observe(fig);
 show('cli');
 
 const PE={
- sp:{"t":"S&P500 Forward P/E 15년 추이","u":"배","x":["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","26.06","26.10","11월"],"s":[["S&P500 12개월 선행 P/E",[11.8,12.4,15.3,16.6,16.4,17.2,18.2,14.5,18.5,22.4,21.4,16.8,19.7,21.9,22.3,20.1,19.3,17.1]]],"ref":17.6,"join":1,"n":"2011~2025는 연말 값(History of Market, FactSet 컨센서스 기준. FactSet 공식 2025년 말 값은 22.0). 26.06은 FactSet 6/26, 26.10은 대신증권 10/9, 11월은 FactSet 11/20. 점선 = FactSet 15년 평균 17.6배."},
- ndx:{"t":"나스닥100 Forward P/E 15년 추이","u":"배","x":["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","26.06","26.10","11월"],"s":[["나스닥100 12개월 선행 P/E",[12.2,12.9,17.8,17.8,18.3,17.9,19.6,16.6,22.0,28.8,28.4,20.1,24.8,26.6,25.4,null,null,16.4]]],"ref":20.3,"join":1,"n":"2011~2025는 연말 값, 11월은 11/20 일별 값(History of Market 컨센서스 기준). 2026년 6·10월 값은 같은 기준으로 확보하지 못해 비웠습니다. 표의 18.7배(XTB 11/17)와는 집계처가 달라 차이가 납니다. 점선 = 2001년 이후 중앙값 20.3배."},
+ sp:{"t":"S&P500 Forward P/E · Forward EPS 15년 추이","u":"배 / 달러","x":["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","26.06","26.09","11/20"],"s":[["Forward P/E (좌, 배)",[11.8,12.4,15.3,16.6,16.4,17.2,18.2,14.5,18.5,22.4,21.4,16.8,19.7,21.9,22.0,20.1,19.0,17.1]],["Forward 12M EPS (우, 달러)",[106.6,113.1,120.4,125.8,125.7,130.2,146.9,171.4,175.1,165.3,222.7,228.5,242.1,272.6,311.3,null,401.9,419.6]]],"r":[1],"ref":17.6,"join":1,"n":"P/E: 2011~2024 연말은 History of Market(FactSet 컨센서스 기준), 2025년 말 22.0·26.06·26.09·11/20은 FactSet Earnings Insight. EPS(12개월 선행 주당순이익 컨센서스, 달러): 11/20은 FactSet 11/20 보고서의 종가 7,175.83 ÷ P/E 17.1로 계산(11/5 보고서 공시값 415.82달러에서 계속 상향), 26.09는 9/30 이후 4.4% 증가했다는 같은 보고서 내용으로 역산, 2025년 말은 FactSet CY2026 bottom-up EPS 311.30달러, 2011~2024년은 해당일 S&P500 종가 ÷ Forward P/E로 계산한 근사치. 26.06 EPS는 미확보. 점선 = P/E 15년 평균 17.6배."},
+ ndx:{"t":"NASDAQ 100 Forward P/E 15년 추이","u":"배","x":["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","26.06","26.10","11월"],"s":[["NASDAQ 100 12개월 선행 P/E",[12.2,12.9,17.8,17.8,18.3,17.9,19.6,16.6,22.0,28.8,28.4,20.1,24.8,26.6,25.4,null,null,16.4]]],"ref":20.3,"join":1,"n":"2011~2025는 연말 값, 11월은 11/20 일별 값(History of Market 컨센서스 기준). 2026년 6·10월 값은 같은 기준으로 확보하지 못해 비웠습니다. 표의 18.7배(XTB 11/17)와는 집계처가 달라 차이가 납니다. 점선 = 2001년 이후 중앙값 20.3배."},
  ks:{"t":"코스피 Forward P/E 15년 추이","u":"배","x":["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","26.06","26.10","11월"],"s":[["코스피 12개월 선행 PER",[8.75,null,null,null,null,null,null,8.51,11.3,14.29,11.29,11.17,11.35,8.42,10.72,8.5,5.5,3.75]]],"ref":10.1,"n":"연말 값은 에프앤가이드 집계 보도(한국경제·파이낸셜뉴스·서울경제). 2012~2017년 연말 값은 이번 조회에서 확보하지 못해 비워 두었습니다. 26.06은 6/19, 26.10은 대신증권 10/9, 11월은 11/13(LS증권·헤럴드경제). 코스피200 선행치 대신 코스피 전체 값. 점선 = 최근 10년 평균 10.1배."}
 };
 const peSvg=document.getElementById('peSvg'),peFig=document.getElementById('peFig');let pcur='sp';
 const peDraw=()=>drawTo(PE[pcur],peSvg,peFig);
-const peShow=k=>{pcur=k;document.getElementById('peTitle').textContent=PE[k].t;document.getElementById('peNote').textContent=PE[k].n;document.querySelectorAll('.pe').forEach(b=>b.classList.toggle('on',b.dataset.p===k));peDraw()};
+const peShow=k=>{pcur=k;const cc=cols();document.getElementById('peLegend').innerHTML=PE[k].s.length>1?PE[k].s.map(([nm],j)=>`<span><i style="background:${cc[j%2]}"></i>${nm}</span>`).join(''):'';document.getElementById('peTitle').textContent=PE[k].t;document.getElementById('peNote').textContent=PE[k].n;document.querySelectorAll('.pe').forEach(b=>b.classList.toggle('on',b.dataset.p===k));peDraw()};
 document.getElementById('sentiment').addEventListener('click',e=>{const b=e.target.closest('.pe');if(!b)return;peShow(b.dataset.p);if(!b.closest('#peBox'))document.getElementById('peBox').scrollIntoView({behavior:'smooth',block:'nearest'})});
 new ResizeObserver(peDraw).observe(peFig);
 peShow('sp');
