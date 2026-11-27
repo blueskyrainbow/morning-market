@@ -1,0 +1,35 @@
+name: telegram-feed
+# 미래에셋증권 시황 텔레그램(t.me/globalmktinsight) 최신 글을 telegram.json으로 저장
+# 한국시간 06:00~24:00 사이 15분마다 (GitHub 사정에 따라 몇 분 늦을 수 있음)
+on:
+  schedule:
+    - cron: "*/15 21-23,0-14 * * *"
+  push:
+    branches: [main]
+    paths: [".github/workflows/telegram.yml", "scripts/telegram.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: telegram-feed
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch channel
+        run: python3 scripts/telegram.py telegram.json
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add telegram.json
+          if git diff --staged --quiet; then echo "no change"; exit 0; fi
+          git commit -m "텔레그램 피드 갱신"
+          for i in 1 2 3; do
+            git pull --rebase -q origin main && git push -q origin main && exit 0
+            sleep 5
+          done
+          exit 1
