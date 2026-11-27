@@ -114,17 +114,75 @@ td.sig{white-space:nowrap}
 footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wrap:anywhere}
 @media(max-width:900px){.hero,.two{grid-template-columns:minmax(0,1fr)}.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.movers,.three{grid-template-columns:minmax(0,1fr)}table{font-size:13px}th,td{padding:6px 4px}.sched li{grid-template-columns:4.8em minmax(0,1fr);gap:12px}.sched .d{font-size:20px}.flows .row{grid-template-columns:7.4em minmax(0,1fr) minmax(0,1fr) 4.8em;font-size:13px}.row{grid-template-columns:6em minmax(0,1fr) 3.8em;font-size:13px}}
+
+/* top banner + link directory */
+.hb-band{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 140% at 85% 10%,#1c3a78 0%,#0f2456 38%,#0a1838 100%);border-bottom:5px solid #ff6a13;padding:clamp(28px,4vw,56px) max(5vw,16px) clamp(26px,3.5vw,44px)}
+.hb-band:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.hb{position:relative;max-width:1240px;margin:0 auto}
+.hb-line{position:absolute;right:max(-5vw,-16px);bottom:-18px;width:min(62%,820px);height:86%;pointer-events:none;overflow:visible}
+.kicker{display:flex;align-items:center;gap:12px;margin:0 0 10px;color:#ff8a3d;font-weight:800;font-size:13px;letter-spacing:.24em}
+.kicker:before{content:"";width:40px;height:2px;background:#ff6a13}
+.hb .brand{font-size:clamp(40px,6.4vw,76px);line-height:1;letter-spacing:-.035em;color:#fff;margin:0}
+.hb .brand em{font-style:normal;color:#ff6a13}
+.hb-sub{font-size:clamp(16px,1.6vw,20px);margin:12px 0 0;color:#dfe6f5}.hb-sub b{color:#fff}
+.stats{display:flex;flex-wrap:wrap;margin:22px 0 0;border-top:1px solid rgba(255,255,255,.18);max-width:760px}
+.stats div{padding:14px 26px 4px 0;margin-right:26px;border-right:1px solid rgba(255,255,255,.18)}.stats div:last-child{border:0}
+.stats small{display:block;font-size:12px;letter-spacing:.16em;color:#aab6d3}
+.stats b{display:block;font-family:"Archivo","Noto Sans KR",sans-serif;font-stretch:112%;font-size:clamp(22px,2.4vw,28px);font-weight:800;color:#ff8a3d;white-space:nowrap}
+.stats b.w{color:#fff}
+.search{display:flex;align-items:center;gap:10px;margin:18px 0 0;max-width:580px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:0 14px;backdrop-filter:blur(2px)}
+.search svg{flex:none;width:20px;height:20px;stroke:#dfe6f5}
+.search input{flex:1;min-height:50px;background:transparent;border:0;color:#fff;font:16px "Noto Sans KR",sans-serif;outline:0}
+.search input::placeholder{color:#aab6d3}.search:focus-within{border-color:#ff8a3d;box-shadow:0 0 0 2px rgba(255,138,61,.35)}
+.hb .date{position:relative;color:#c9d3ea;margin-top:14px;font-size:14px;max-width:58ch}
+.chips{display:flex;gap:10px;flex-wrap:wrap;padding:16px 0}
+.chip{font:600 16px "Noto Sans KR",sans-serif;min-height:46px;padding:0 20px;border-radius:999px;border:1px solid var(--hair);background:var(--bg);color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--ink)}.chip[aria-pressed=true]{background:#0f2456;border-color:#0f2456;color:#fff}
+.chip:focus-visible{outline:2px solid #ff6a13;outline-offset:2px}
+.dir{border-bottom:1px solid var(--hair)}
+.dgrp h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:clamp(22px,2.4vw,28px);margin:22px 0 0;padding-bottom:12px;border-bottom:2px solid light-dark(#0f2456,#9fb3e6);letter-spacing:-.02em}
+.dgrp h2 small{font-size:15px;font-weight:400;color:var(--sub);letter-spacing:0}
+.drows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
+.drow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 4px;border-bottom:1px solid var(--hair);color:var(--ink);text-decoration:none;border-radius:4px}
+.drow:hover,.drow:focus-visible{background:var(--zone);outline:0}.drow:focus-visible{box-shadow:inset 0 0 0 2px #ff6a13}
+.dn1{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;line-height:1.25}
+.dn1 svg{flex:none;width:26px;height:26px}
+.dpath{grid-column:1;font-size:13px;color:var(--sub);margin-left:36px;overflow-wrap:anywhere}
+.ddesc{grid-column:1/-1;margin:4px 0 0 36px;font-size:15px}
+.dwhen{grid-column:1/-1;margin:2px 0 0 36px;font-size:14px;color:var(--sub)}.dwhen b{color:var(--ink)}
+.dtags{grid-column:1/-1;margin:2px 0 0 36px;font-size:13px;color:#e2560a}
+.dupd{grid-column:2;grid-row:1/span 2;text-align:right;font-size:13px;color:var(--sub);white-space:nowrap}.dupd b{display:block;color:#e2560a;font-size:14px}
+.dempty{padding:18px 4px;color:var(--sub)}
+@media(max-width:820px){.drows{grid-template-columns:minmax(0,1fr)}.hb-line{width:90%;opacity:.45}}
+@media(max-width:600px){.stats div{padding-right:16px;margin-right:16px}.dupd{grid-column:1/-1;grid-row:auto;text-align:left;margin-left:36px}.dupd b{display:inline;margin-right:6px}}
+@media(prefers-reduced-motion:no-preference){.hb-line path.ln{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 1.8s .2s ease-out forwards}@keyframes draw{to{stroke-dashoffset:0}}}
+.tg .x{display:block;color:var(--sub);font-size:14px;margin-top:2px}.tg .fw{font-size:12px;color:var(--sub);margin-left:6px}
 </style>
 </head>
 <body>
-<header class="band" style="padding-bottom:0">
+<header class="hb-band" id="top">
+ <div class="hb">
+  <svg class="hb-line" viewBox="0 0 800 300" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hbg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff6a13" stop-opacity=".28"/><stop offset="1" stop-color="#ff6a13" stop-opacity="0"/></linearGradient><filter id="hbglow"><feGaussianBlur stdDeviation="6"/></filter></defs><path d="M0 300 L0 268 L110 232 L190 248 L300 176 L380 196 L470 128 L560 150 L660 70 L740 92 L800 20 L800 300Z" fill="url(#hbg)"/><path class="ln" d="M0 268 L110 232 L190 248 L300 176 L380 196 L470 128 L560 150 L660 70 L740 92 L800 20" fill="none" stroke="#ff6a13" stroke-width="10" opacity=".35" filter="url(#hbglow)"/><path class="ln" d="M0 268 L110 232 L190 248 L300 176 L380 196 L470 128 L560 150 L660 70 L740 92 L800 20" fill="none" stroke="#ff7a22" stroke-width="3.5" stroke-linejoin="round"/></svg>
+  <p class="kicker">PRIVATE BANKER · MARKET BOARD</p>
+  <h1 class="brand"><em>모닝</em> 마켓 보드</h1>
+  <p class="hb-sub"><b>PB</b>의 투자 데스크 — 시황·심리·수급·지표·일정을 한곳에서</p>
+  <div class="stats"><div><small>바로가기</small><b id="stLinks">0</b></div><div><small>분류</small><b id="stCats" class="w">0</b></div><div><small>SEOUL · KST</small><b id="clock" class="w">--</b></div></div>
+  <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="바로가기 찾기 (예: 공포, 금리, 텔레그램)" aria-label="바로가기 찾기" autocomplete="off"></label>
+  <div class="date">11월 27일(금) 오후 5시 기준 · 한국 11/27 마감 · 미국 11/25 마감(11/26 추수감사절 휴장, 오늘 밤 조기 폐장)</div>
+ </div>
+</header>
+
+<section class="band dir" id="links" style="padding-top:0">
  <div class="wrap">
-  <div class="top">
-   <h1 class="brand">모닝 마켓 보드</h1>
-   <div class="date">11월 27일(금) 오후 5시 기준 · 한국 11/27 마감 · 미국 11/25 마감(11/26 추수감사절 휴장, 오늘 밤 조기 폐장)</div>
-  </div>
+  <div class="chips" id="chips" role="group" aria-label="분류"></div>
+  <div id="dirOut"></div>
+ </div>
+</section>
+
+<header class="band" style="padding-bottom:0;padding-top:12px">
+ <div class="wrap">
   <nav class="scroll" aria-label="섹션">
-   <a href="#market">시황</a><a href="#sentiment">공포·탐욕</a><a href="#flows">수급</a><a href="#macro">경제지표</a><a href="#calendar">일정</a><a href="#view">투자자 관점</a><a href="#sources">출처</a>
+   <a href="#links">바로가기</a><a href="#market">시황</a><a href="#sentiment">공포·탐욕</a><a href="#flows">수급</a><a href="#macro">경제지표</a><a href="#calendar">일정</a><a href="#view">투자자 관점</a><a href="#sources">출처</a>
   </nav>
   <h2 class="find">외국인 1.1조원 '폭풍 매수'에 코스피 +4.34% 4,915, 코스닥 +8.13% 700선 회복. 나스닥100 선물 +2.9%가 불 붙였다</h2>
   <p class="lede">코스피는 장 초반 4,682까지 밀렸다가 아시아 시간 나스닥100 선물이 2%대로 오르자 외국인이 9월 7일 이후 처음 조 단위(약 1조1,298억원)로 사들여 +4.34% 4,915.68로 마감했습니다. 코스닥은 오전 10시 22분 매수 사이드카(올해 23번째)가 걸린 뒤 +8.13% 708.99로 12거래일 만에 700선을 되찾았습니다. 삼성전자 +4.55%(179,100원)·SK하이닉스 +5.41%(1,110,000원)에 외국인 매수 8,207억원이 몰렸고, 상승 782·하락 109종목으로 거의 전 종목이 올랐습니다. 원/달러는 1,337.9원(-4.8원)으로 내렸고, 국고 3년물은 3.685%로 전날에 이어 올랐습니다. 미국 현물은 26일 추수감사절 휴장으로 25일 종가가 마지막이며, 오늘 밤은 현지 13:00(한국 28일 03:00) 조기 폐장입니다. 한국시간 15:35 무렵 나스닥100 선물은 +2.87%, S&amp;P500 선물 +1.8%, 다우 선물 +490포인트로 휴장 전 낙폭을 되돌리는 중이고 일본 닛케이도 +1.91% 올랐습니다. 다만 미 10년물 금리는 4.918%로 다시 오르고(12월 인상 확률 99%) WTI는 86달러대로 뛰어 금리·유가 부담은 그대로입니다.</p>
@@ -240,7 +298,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
     </div>
    </div>
    <div>
-    <h3 style="margin:0 0 8px">바닥 신호 점검 (NASDAQ 100·S&amp;P 500 기준)</h3>
+    <h3 style="margin:0 0 8px" id="bottom">바닥 신호 점검 (NASDAQ 100·S&amp;P 500 기준)</h3>
     <ul class="check">
      <li><span class="mark up">충족</span><span>CNN 공포·탐욕 15 이하 극단적 공포</span><span class="num">15 (11/24 11 → 11/25 15)</span></li>
      <li><span class="mark up">근접</span><span>NASDAQ 100 고점 대비 -20% 약세장 기준</span><span>직전 근접(11/25 장중 -4.7%)</span></li>
@@ -284,7 +342,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
     <p class="note">피델리티(FBCG·FMAG·FGRO)와 T로우 프라이스 블루칩·성장 계열(TCHP·TGRW·TSPA 등)은 보유 종목을 매일 공개하지 않는 반투명 구조라 집계에서 빠집니다.</p>
    </div>
   </div>
-  <h3 style="margin:28px 0 8px">액티브 ETF 공통 매매 종목 (11/11~11/24 공개분)</h3>
+  <h3 style="margin:28px 0 8px" id="etfCommon">액티브 ETF 공통 매매 종목 (11/11~11/24 공개분)</h3>
   <div class="scroll"><table class="stack">
    <thead><tr><th>종목</th><th>매수한 ETF</th><th>매도한 ETF</th><th>신호</th></tr></thead>
    <tbody id="etfBody"></tbody>
@@ -497,6 +555,68 @@ const sched=[
  ['12/15','화','기타','한국은행 11/26 금통위 의사록 공개. 앤트로픽 첫 보호예수 해제. 22:30 미국 11월 PPI. 오라클 실적은 12/14 전후(미확정)']
 ];
 document.getElementById('sched').innerHTML=sched.map(s=>`<li><div class="d num">${s[0]}<small>${s[1]}</small></div><div><b><span class="tag">${s[2]}</span></b>${s[3]}</div></li>`).join('');
+}
+</script>
+
+<script>
+{
+const IC={
+ chat:'<svg viewBox="0 0 26 26"><rect x="2" y="4" width="22" height="16" rx="3" fill="#2aa3e0"/><path d="M7 20l-2 4 6-4" fill="#2aa3e0"/><path d="M7 10h12M7 14h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>',
+ line:'<svg viewBox="0 0 26 26"><rect x="2" y="2" width="22" height="22" rx="4" fill="#0f2456"/><path d="M6 18l5-5 3 3 6-7" fill="none" stroke="#ff7a22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ gauge:'<svg viewBox="0 0 26 26"><path d="M3 18a10 10 0 0 1 20 0" fill="none" stroke="#e4002b" stroke-width="4"/><path d="M13 18l-5-6" stroke="#0f2456" stroke-width="2.4" stroke-linecap="round"/><circle cx="13" cy="18" r="2.4" fill="#0f2456"/></svg>',
+ target:'<svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" fill="none" stroke="#1f5fd6" stroke-width="2.4"/><circle cx="13" cy="13" r="5" fill="none" stroke="#1f5fd6" stroke-width="2.4"/><circle cx="13" cy="13" r="1.8" fill="#e4002b"/></svg>',
+ flow:'<svg viewBox="0 0 26 26"><path d="M4 9h14l-4-4M22 17H8l4 4" fill="none" stroke="#0f2456" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="21" cy="9" r="2.4" fill="#e4002b"/><circle cx="5" cy="17" r="2.4" fill="#1f5fd6"/></svg>',
+ bars:'<svg viewBox="0 0 26 26"><rect x="3" y="13" width="5" height="10" fill="#1f5fd6"/><rect x="10.5" y="6" width="5" height="17" fill="#e4002b"/><rect x="18" y="10" width="5" height="13" fill="#0f2456"/></svg>',
+ cal:'<svg viewBox="0 0 26 26"><rect x="3" y="5" width="20" height="18" rx="2.5" fill="#fff" stroke="#0f2456" stroke-width="2"/><rect x="3" y="5" width="20" height="6" fill="#ff6a13"/><path d="M8 3v5M18 3v5" stroke="#0f2456" stroke-width="2" stroke-linecap="round"/><rect x="7" y="14" width="4" height="4" fill="#0f2456"/></svg>',
+ eye:'<svg viewBox="0 0 26 26"><path d="M2 13s4-7 11-7 11 7 11 7-4 7-11 7S2 13 2 13z" fill="#ffe7d6" stroke="#ff6a13" stroke-width="2"/><circle cx="13" cy="13" r="3.6" fill="#0f2456"/></svg>',
+ globe:'<svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" fill="#e8f1fd" stroke="#1f5fd6" stroke-width="2"/><path d="M3 13h20M13 3c4 4 4 16 0 20M13 3c-4 4-4 16 0 20" fill="none" stroke="#1f5fd6" stroke-width="1.6"/></svg>'
+};
+const CATS=[['am','아침 시장 점검','오늘 시장의 큰 그림 — 시황·금리·환율·텔레그램'],['mood','심리·바닥','공포·탐욕, 밸류에이션, 바닥 신호'],['flow','수급','외국인·기관, 미국 액티브 ETF'],['macro','지표·일정','경제지표 추이와 이벤트 달력'],['ext','외부 사이트','원본 데이터를 바로 확인']];
+const L=[
+ ['am','chat','미래에셋 텔레그램 시황','#tg','미래에셋증권 시황 채널(김석환·김주연) 최신 글을 시각순으로 모아 보기','아침 브리핑·장중 시황을 빠르게 훑을 때',['글로벌마켓브리핑','마켓클로징','장중시황'],'06~24시 15분 간격'],
+ ['am','line','전일 시황 정리','#market','미국·한국 증시 마감 정리와 주요 종목 등락률','출근 직후 지난밤과 오늘 시장을 한 번에 볼 때',['미국증시','한국증시','종목등락'],'매일 07:30 · 17:00'],
+ ['am','bars','금리·환율·원자재 띠','#tape','미·한 국채금리, 기준금리, 하이일드 스프레드, 원/달러, WTI, 금, 비트코인','금리·환율이 크게 움직인 날 원인을 찾을 때',['금리','환율','유가','하이일드'],'매일 07:30 · 17:00'],
+ ['mood','gauge','공포·탐욕 CHECK','#sentiment','CNN 공포·탐욕, VIX, VKOSPI와 미·한 과열도','급등락 다음 날 시장이 과열인지 공포인지 확인할 때',['CNN공포탐욕','VIX','VKOSPI'],'매일 07:30 · 17:00'],
+ ['mood','target','바닥 신호 점검','#bottom','NASDAQ 100·S&P 500 기준 7개 바닥 신호의 충족·근접 판정','분할 매수 타이밍을 잴 때',['바닥신호','분할매수','VIX기간구조'],'매일 07:30 · 17:00'],
+ ['mood','line','Forward P/E 15년 추이','#peBox','S&P500·NASDAQ 100·코스피 12개월 선행 P/E와 S&P500 Forward EPS','지금 밸류에이션이 역사적으로 어디쯤인지 볼 때',['ForwardPE','EPS','밸류에이션'],'매일 07:30'],
+ ['flow','flow','투자자별 순매수','#flows','코스피·코스닥 외국인·기관·개인 순매수와 상위 종목','외국인이 무엇을 사고파는지 확인할 때',['외국인','기관','순매수'],'매일 07:30 · 17:00'],
+ ['flow','bars','액티브 ETF 공통 매매','#etfCommon','블랙록·JP모건·캐피털그룹 등 주식형 액티브 ETF 30개가 함께 사고판 종목','미국 종목 아이디어를 찾을 때',['액티브ETF','미국종목'],'매일 07:30'],
+ ['macro','line','경제지표 추이','#macro','경기선행지수, 성장률, CPI·PCE, 금리, 고용, 하이일드 스프레드 2년 그래프','지표 발표 전후 흐름을 확인할 때',['CPI','고용','장단기금리차'],'발표 시 반영'],
+ ['macro','cal','일정','#calendar','한·미 실적, FOMC, 금통위, 지수 변경, 휴장','이번 주 이벤트 매매를 준비할 때',['FOMC','금통위','실적발표'],'매일 07:30 · 17:00'],
+ ['macro','eye','투자자 관점','#view','데이터에 근거한 매도 관점·분할 매수 관점·매수 우위 정리','고객 상담 전 오늘의 결론만 볼 때',['매도관점','분할매수'],'매일 07:30 · 17:00'],
+ ['ext','chat','미래에셋증권 시황 텔레그램','https://t.me/globalmktinsight','Fact & Insight 채널 원문','원문 차트·첨부 자료가 필요할 때',['텔레그램'],'채널'],
+ ['ext','globe','CNN Fear & Greed','https://edition.cnn.com/markets/fear-and-greed','CNN 공포·탐욕 지수와 7개 세부 지표 원문','공포·탐욕 세부 지표를 볼 때',['CNN'],'미국 장중'],
+ ['ext','globe','FRED 하이일드 스프레드','https://fred.stlouisfed.org/series/BAMLH0A0HYM2','ICE BofA 미국 하이일드 옵션조정 스프레드','신용 위험이 커지는지 볼 때',['FRED','신용'],'매일'],
+ ['ext','globe','FactSet Earnings Insight','https://www.factset.com/earningsinsight','S&P500 Forward P/E·EPS 주간 보고서','미국 이익 추정치 변화를 볼 때',['FactSet','EPS'],'매주 금'],
+ ['ext','globe','한국거래소 정보데이터시스템','https://data.krx.co.kr/','코스피·코스닥 투자자별 매매, PER·PBR 원자료','수급·밸류 원자료가 필요할 때',['KRX'],'매일'],
+ ['ext','globe','한국은행 ECOS','https://ecos.bok.or.kr/','기준금리, 국고채, CPI 등 한국 경제통계','한국 지표 원자료가 필요할 때',['ECOS'],'발표 시'],
+ ['ext','globe','VIX Central','https://vixcentral.com/','VIX 선물 기간구조(콘탱고·백워데이션)','VIX 기간구조를 직접 볼 때',['VIX선물'],'실시간']
+];
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let cat='all';
+const q=document.getElementById('q'),out=document.getElementById('dirOut'),chips=document.getElementById('chips');
+chips.innerHTML=[['all','전체']].concat(CATS.map(c=>[c[0],c[1]])).map(([k,n])=>`<button type="button" class="chip" data-c="${k}" aria-pressed="${k==='all'}">${n}</button>`).join('');
+document.getElementById('stLinks').textContent=L.length;document.getElementById('stCats').textContent=CATS.length;
+const row=r=>{const ext=r[3].startsWith('http');const path=ext?r[3].replace(/^https?:\/\//,'').replace(/\/$/,''):'/'+r[3].slice(1);
+ return `<a class="drow" href="${esc(r[3])}"${ext?' target="_blank" rel="noopener"':''}><div class="dn1">${IC[r[1]]}<span>${esc(r[2])}${ext?' ↗':''}</span></div><div class="dupd"><b>갱신</b>${esc(r[7])}</div><div class="dpath">${esc(path)}</div><p class="ddesc">${esc(r[4])}</p><p class="dwhen"><b>언제 쓰나</b> ${esc(r[5])}</p><p class="dtags">${r[6].map(t=>'#'+esc(t)).join(' ')}</p></a>`};
+const render=()=>{const w=q.value.trim().toLowerCase();
+ const hit=r=>(cat==='all'||r[0]===cat)&&(!w||(r[2]+' '+r[4]+' '+r[5]+' '+r[6].join(' ')).toLowerCase().includes(w));
+ const html=CATS.map(([k,n,d])=>{const rs=L.filter(r=>r[0]===k&&hit(r));return rs.length?`<div class="dgrp"><h2>${n}<small>${d}</small></h2><div class="drows">${rs.map(row).join('')}</div></div>`:''}).join('');
+ out.innerHTML=html||'<p class="dempty">찾는 바로가기가 없습니다. 다른 낱말로 찾아보세요.</p>'};
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+q.addEventListener('input',()=>{if(q.value&&cat!=='all'){cat='all';chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.c==='all'))}render()});
+render();
+const clk=document.getElementById('clock');const tick=()=>{try{const f=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());const g=t=>(f.find(p=>p.type===t)||{}).value;clk.textContent=`${g('year')}.${g('month')}.${g('day')} (${g('weekday')}) ${g('hour')}:${g('minute')}`}catch(e){}};tick();setInterval(tick,30000);
+/* 텔레그램 피드: telegram.json(GitHub Actions가 15분마다 갱신)을 읽어 박스를 채움 */
+const tgBox=document.getElementById('tg');
+const tgLoad=async()=>{if(!tgBox)return;const srcs=['telegram.json?t='+Date.now()];
+ if(/github\.io$/.test(location.hostname))srcs.push('https://raw.githubusercontent.com/blueskyrainbow/morning-market/main/telegram.json?t='+Date.now());
+ const rs=await Promise.allSettled(srcs.map(u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status))));
+ const ok=rs.filter(r=>r.status==='fulfilled'&&r.value&&Array.isArray(r.value.posts)&&r.value.posts.length).map(r=>r.value).sort((a,b)=>String(b.updated).localeCompare(String(a.updated)));
+ if(!ok.length)return;const d=ok[0];
+ tgBox.querySelector('ol').innerHTML=d.posts.slice(0,8).map(p=>`<li><span class="t">${esc(p.label)}</span><b>${esc(p.title)}</b>${p.fwd?`<span class="fw">· ${esc(p.fwd)} 전달</span>`:''}${p.excerpt?`<span class="x">${esc(p.excerpt)}</span>`:''} <a href="${esc(p.url)}" target="_blank" rel="noopener">원문 ↗</a></li>`).join('');
+ const n=tgBox.querySelector('.note');if(n)n.textContent=`채널 최신 글 ${d.posts.length>8?8:d.posts.length}개를 자동으로 가져옵니다(한국시간, ${String(d.updated).slice(5,10).replace('-','/')} ${String(d.updated).slice(11,16)} 수집). 전체 내용과 차트는 원문 링크에서 확인하세요.`};
+tgLoad();setInterval(tgLoad,10*60*1000);
 }
 </script>
 </body>

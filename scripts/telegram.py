@@ -34,14 +34,15 @@ def parse(page):
         if not tm or not tx:
             continue  # 고정 알림 등 서비스 메시지
         text = clean(tx.group(1))
-        if not text:
-            continue
+        if not text or "service_message" in chunk[:400] or re.search(r"\bpinned\s+«", text):
+            continue  # 비어 있거나 '고정' 알림
         fw = re.search(r'tgme_widget_message_forwarded_from_name[^>]*>(?:<span[^>]*>)?([^<]+)', chunk)
         when = datetime.fromisoformat(tm.group(1)).astimezone(KST)
         lines = text.split("\n")
         title = lines[0][:80]
         rest = " ".join(lines[1:])
-        excerpt = (rest[:150] + "…") if len(rest) > 150 else rest
+        rest = re.sub(r"^[#▶️■\s]+", "", rest)
+        excerpt = (rest[:100] + "…") if len(rest) > 100 else rest
         posts.append({
             "id": pid,
             "time": when.strftime("%Y-%m-%dT%H:%M+09:00"),
