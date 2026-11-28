@@ -1,5 +1,5 @@
 name: cnn-fear-greed
-# CNN 공포·탐욕 지수를 fng.json으로 저장
+# CNN 공포·탐욕 지수(fng.json)와 Cboe VIX·VIX3M(vix.json)을 저장
 # 한국시간 07:05·07:25(아침 갱신 전), 16:35·16:55(오후 5시 갱신 전), 그 밖에 미국 장중 매시
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
     - cron: "10 14-21 * * 1-5"
   push:
     branches: [main]
-    paths: [".github/workflows/fng.yml", "scripts/fng.py"]
+    paths: [".github/workflows/fng.yml", "scripts/fng.py", "scripts/vix.py"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -23,13 +23,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch CNN Fear & Greed
         run: python3 scripts/fng.py fng.json
+      - name: Fetch Cboe VIX / VIX3M
+        continue-on-error: true
+        run: python3 scripts/vix.py vix.json
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add fng.json
+          git add fng.json; [ -f vix.json ] && git add vix.json
           if git diff --staged --quiet; then echo "no change"; exit 0; fi
-          git commit -m "CNN 공포·탐욕 갱신"
+          git commit -m "CNN 공포·탐욕·VIX 기간구조 갱신"
           for i in 1 2 3; do
             git pull --rebase -q origin main && git push -q origin main && exit 0
             sleep 5

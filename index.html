@@ -312,10 +312,10 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
      <li><span class="mark up">진행</span><span>헤지펀드 공매도 환매수(숏커버)</span><span>ETF 공매도 급증 뒤 주간 +6.8% 반등</span></li>
      <li><span class="mark up">충족</span><span>S&amp;P 500, 50일 이동평균선 대비 약 -4 표준편차</span><span class="num">11/20 -4.1σ → 11/27 -1.5σ</span></li>
      <li><span class="mark up">근접</span><span>미국 하이일드 스프레드 확대 중단·축소</span><span class="num">3.68%p(11/27, 고점 3.77 대비 -9bp, 30일선 3.42 위)</span></li>
-     <li><span class="mark up">근접</span><span>VIX 기간구조 백워데이션 해소</span><span class="num">VIX/VIX3M 1.03(FRED 11/24)</span></li>
+     <li id="vixSig"><span class="mark up">근접</span><span>VIX 기간구조 백워데이션 해소</span><span class="num">VIX/VIX3M 0.9996(11/27, VIX 23.81·VIX3M 23.82)</span></li>
     </ul>
     <p class="note">공포·탐욕은 CNN 기준 25(24.89, 11/28 08:59 한국시간 갱신, 11/27 마감 반영)로 아직 극단적 공포 구간이지만 15 기준선보다 10 높아 '근접'으로 바꿨습니다. 11/24 10.96 바닥 뒤 주간 반등으로 올라왔습니다. 세부 지표는 시장 모멘텀 8.2, 풋/콜 옵션 19, 정크본드 수요 19.2, 안전자산 수요 19.4가 극단적 공포, 주가 강도 28.8·주가 폭 29.6이 공포, 변동성(VIX) 50이 중립입니다. VIX는 11/20 35.89(FRED)로 35를 넘긴 뒤 23.81까지 내려와 '돌파 후 꺾임'을 충족했습니다(기준선 35까지 +11.2). NASDAQ 100은 한 주에 +6.78% 반등해 -20% 기준과 멀어졌습니다(고점 대비 정확한 낙폭은 이번 조회에서 확인하지 못함). 숏커버는 정량 자료가 없지만, 골드만삭스 집계로 직전 주 ETF 공매도가 약 19포인트 늘어 10년 내 세 번째로 큰 주간 증가였고(11/23) 그 뒤 지수가 급반등해 '진행'으로 봅니다.</p>
-    <p class="note">S&amp;P 500은 11/20 종가 6,910.39가 50일선(7,625)보다 4.1표준편차(σ, 50일 종가 기준) 아래로 떨어져 투매 기준을 충족했고(2주 이내), 11/27 7,297.49는 50일선 7,596 대비 -3.9%, -1.45σ까지 회복했습니다(-4σ 수준 약 6,773, 지금보다 -7.2%). FRED SP500이 11/19까지만 게시돼 11/20~27 종가는 보도 값을 썼고, 11/23 종가는 SPY 비율로 추정(약 7,239)했습니다. 하이일드 스프레드는 11/25·26 3.77 고점 뒤 11/27 3.68(ICE 지수 사이트 OAS)로 9bp 줄어 '근접'으로 바꿨습니다. 다만 30일선 3.42·60일선 3.17이 아직 오르는 중이고 스프레드가 30일선보다 26bp 위라, 30일선 아래로 내려와야 '충족'입니다. 4%까지는 32bp. VIX 기간구조는 11/17부터 백워데이션입니다. FRED 최신 VIX/VIX3M은 11/24 1.03(VIXCLS 26.36, VXVCLS 25.47)으로 '근접' 구간이지만, thetrading.tools 집계 11/25 값은 1.07(VIX 28.10·VIX3M 26.20, 7거래일째 백워데이션)로 다시 1.05를 넘었습니다. 11/27은 VIX 23.81에 Cboe VIX 선물 12월물 정산 22.84·1월물 22.79로 근월물이 현물보다 약 4% 낮아 백워데이션 폭이 크게 줄었고, 곡선이 콘탱고로 돌아오는 중이라는 보도(finexus)도 있지만 11/27 VIX3M 값은 확인하지 못했습니다. 출처: FRED SP500·BAMLH0A0HYM2·VIXCLS·VXVCLS, thetrading.tools, Cboe VIX 선물, Cestrian·야후 파이낸스(11/27 종가). VIX 11/27 등락률(-11.16%)은 FRED 11/26 값(26.80) 대비이며, 25일 종가 대비로는 -15.8%입니다.</p>
+    <p class="note">S&amp;P 500은 11/20 종가 6,910.39가 50일선(7,625)보다 4.1표준편차(σ, 50일 종가 기준) 아래로 떨어져 투매 기준을 충족했고(2주 이내), 11/27 7,297.49는 50일선 7,596 대비 -3.9%, -1.45σ까지 회복했습니다(-4σ 수준 약 6,773, 지금보다 -7.2%). FRED SP500이 11/19까지만 게시돼 11/20~27 종가는 보도 값을 썼고, 11/23 종가는 SPY 비율로 추정(약 7,239)했습니다. 하이일드 스프레드는 11/25·26 3.77 고점 뒤 11/27 3.68(ICE 지수 사이트 OAS)로 9bp 줄어 '근접'으로 바꿨습니다. 다만 30일선 3.42·60일선 3.17이 아직 오르는 중이고 스프레드가 30일선보다 26bp 위라, 30일선 아래로 내려와야 '충족'입니다. 4%까지는 32bp. VIX 기간구조는 11/17부터 이어진 백워데이션이 11/27 풀렸습니다. VIX/VIX3M이 0.9996(VIX 23.81·VIX3M 23.82, Cboe 종가)으로 7거래일 만에 1 아래로 내려왔습니다(직전 거래일 약 1.08). 다만 Cboe VIX 선물 12월물 정산 22.84·1월물 22.79가 아직 현물보다 약 4% 낮아, '선물 1·2월물이 현물보다 높아짐' 조건까지는 못 와서 '근접'을 유지합니다. 비율이 며칠 1 아래에 머물고 선물이 현물 위로 올라서면 '충족'입니다. 출처: FRED SP500·BAMLH0A0HYM2·VIXCLS·VXVCLS, Cboe VIX·VIX3M 일별 종가, thetrading.tools, Cboe VIX 선물, Cestrian·야후 파이낸스(11/27 종가). VIX 11/27 등락률(-11.16%)은 FRED 11/26 값(26.80) 대비이며, 25일 종가 대비로는 -15.8%입니다.</p>
    </div>
   </div>
  </div>
@@ -396,7 +396,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
    <li><span class="sell">매도 관점</span> 코스닥 급등 테마(로봇·이차전지·바이오)의 단기 보유분. 코스닥은 27일 하루 +8.13%, 매수 사이드카까지 걸렸고 레인보우로보틱스·에코프로·에이비엘바이오 등이 10~20% 뛰었습니다. 이달 코스닥 일평균 거래대금은 올해 평균의 절반 수준이라 얇은 거래 위 급등은 되돌림도 큽니다. 미국 금요일 반등으로 30일 월요일 강세 출발 가능성이 높은 만큼, 그 갭 상승 때 단기 물량의 절반가량을 줄이는 매도 관점이 유리합니다.</li>
    <li><span class="sell">매도 관점</span> 레버리지·금리 민감 포지션과 하루 급등한 증권주. 미 10년물이 4.94%(+9bp), 한국 10년물이 3.832%(+4.2bp)로 함께 올랐고, 미국 하이일드 스프레드는 11/27 3.68%p로 고점 3.77에서 9bp 줄었을 뿐 아직 30일선(3.42) 위입니다(4%까지 32bp). 주식은 한 주에 5~7% 올랐는데 신용은 겨우 꺾이기 시작한 '괴리'입니다. 신용으로 버티는 포지션은 이번 반등에 줄이고, 하이일드가 4%를 넘기면 위험자산 비중을 한 번 더 줄입니다. 외국인이 판 키움증권·미래에셋증권(27일 +15.87%)도 차익 실현 쪽입니다.</li>
    <li><span class="sell">매도 관점</span> 유가에 약한 항공·운송. WTI는 83달러대로 숨을 골랐지만 브렌트는 95달러대로 주간 +3%, 사우디 정유시설 피격과 호르무즈 긴장이 이어집니다. 29일 OPEC+ 결과를 보기 전까지는 반등 때 줄이는 편이 낫습니다.</li>
-   <li><span class="buy">분할 매수 관점</span> 미국 지수(S&amp;P500·NASDAQ 100). 바닥 신호 7개 중 2개 충족(VIX 35 돌파 후 23.81로 꺾임, S&amp;P500 11/20 -4.1σ 투매), 3개 근접(공포·탐욕 25, 하이일드 3.68%p로 고점 대비 -9bp, VIX 기간구조 FRED 11/24 비율 1.03·11/27 선물 근월물이 현물에 근접), 숏커버 진행, 1개 미충족(NASDAQ 100 -20%)입니다. 1차(목표 비중의 3분의 1)는 이미 담은 것으로 보고, 한 주에 5.6% 오른 지금 추격은 피합니다. 2차는 하이일드 스프레드가 30일선(3.42) 아래로 내려오고 VIX/VIX3M이 1 아래(콘탱고)로 확인될 때, 3차는 12/4 고용·12/10 FOMC 결과 뒤가 안전합니다. S&amp;P500이 50일선(약 7,596)을 회복하면 추세 반전 신호로 2차를 앞당길 수 있습니다.</li>
+   <li><span class="buy">분할 매수 관점</span> 미국 지수(S&amp;P500·NASDAQ 100). 바닥 신호 7개 중 2개 충족(VIX 35 돌파 후 23.81로 꺾임, S&amp;P500 11/20 -4.1σ 투매), 3개 근접(공포·탐욕 25, 하이일드 3.68%p로 고점 대비 -9bp, VIX 기간구조 11/27 VIX/VIX3M 0.9996으로 1 아래 진입했지만 선물 근월물은 아직 현물 아래), 숏커버 진행, 1개 미충족(NASDAQ 100 -20%)입니다. 1차(목표 비중의 3분의 1)는 이미 담은 것으로 보고, 한 주에 5.6% 오른 지금 추격은 피합니다. 2차는 하이일드 스프레드가 30일선(3.42) 아래로 내려오고 VIX/VIX3M이 1 아래(콘탱고)로 확인될 때, 3차는 12/4 고용·12/10 FOMC 결과 뒤가 안전합니다. S&amp;P500이 50일선(약 7,596)을 회복하면 추세 반전 신호로 2차를 앞당길 수 있습니다.</li>
    <li><span class="buy">분할 매수 관점</span> 코스피 지수·우량주. 외국인이 9월 이후 처음 조 단위로 돌아왔고 금요일 밤 SK하이닉스 ADR +7.38%·필라델피아 반도체 +4.69%로 월요일 여건도 좋습니다. 다만 하루로는 추세 전환을 단정할 수 없어, 외국인 순매수가 사흘 이상 이어지고 코스피가 4,900선을 지키면 2차, 12/1 수출입동향(반도체 수출)과 12/4 미국 고용을 확인한 뒤 3차로 나눠 담습니다. 4,700선(26일 종가)을 다시 내주면 반등 실패로 보고 추가 매수를 미룹니다.</li>
    <li><span class="buy">매수 우위</span> 외국인이 몰려 산 삼성전자(4,424억원)·SK하이닉스(3,783억원)의 장기 핵심 보유분은 유지·눌림목 보강(기관이 SK하이닉스를 2,540억원 판 물량을 외국인이 받아낸 구도), 외국인이 함께 산 전력기기(두산에너빌리티·LS ELECTRIC·효성중공업)와 삼성전기·SK스퀘어. 미국 메모리(마이크론 +7.60%·샌디스크 +15.96%) 강세는 한국 메모리 2강에 우호적입니다. 12/11 코스피200 편입 종목(대덕전자·효성·일진전기 등)은 반영일 전 패시브 매수 수혜를 볼 수 있습니다. 미국 액티브 ETF는 앤트로픽·스페이스X를 함께 사고, 엔비디아·브로드컴·메타·테슬라는 함께 줄였습니다.</li>
   </ol>
@@ -641,6 +641,15 @@ const fngLoad=async()=>{const srcs=['fng.json?t='+Date.now()];if(/github\.io$/.t
  const ok=rs.filter(r=>r.status==='fulfilled'&&r.value&&typeof r.value.score==='number').map(r=>r.value).sort((a,b)=>String(b.updated).localeCompare(String(a.updated)));
  if(ok.length)fngApply(ok[0])};
 fngLoad();setInterval(fngLoad,30*60*1000);
+/* VIX/VIX3M: vix.json(GitHub Actions가 Cboe 공식 일별 종가 파일에서 받아 옴)으로 바닥 신호 ⑦ 수치를 맞춤 */
+const vixLoad=async()=>{const li=document.getElementById('vixSig');if(!li)return;const srcs=['vix.json?t='+Date.now()];if(/github\.io$/.test(location.hostname))srcs.push('https://raw.githubusercontent.com/blueskyrainbow/morning-market/main/vix.json?t='+Date.now());
+ const rs=await Promise.allSettled(srcs.map(u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status))));
+ const ok=rs.filter(r=>r.status==='fulfilled'&&r.value&&typeof r.value.ratio==='number').map(r=>r.value).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+ if(!ok.length)return;const d=ok[0],n=li.querySelector('.num'),m=li.querySelector('.mark');
+ if(n)n.textContent=`VIX/VIX3M ${d.ratio.toFixed(4)}(${d.label}, VIX ${d.vix.toFixed(2)}·VIX3M ${d.vix3m.toFixed(2)})`;
+ if(m&&d.ratio>1.05)m.textContent='미충족';else if(m&&d.ratio>=1&&m.textContent==='충족')m.textContent='근접'};
+vixLoad();setInterval(vixLoad,30*60*1000);
+
 
 }
 </script>
