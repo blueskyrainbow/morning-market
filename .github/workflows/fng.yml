@@ -1,0 +1,37 @@
+name: cnn-fear-greed
+# CNN 공포·탐욕 지수를 fng.json으로 저장
+# 한국시간 07:05·07:25(아침 갱신 전), 16:35·16:55(오후 5시 갱신 전), 그 밖에 미국 장중 매시
+on:
+  schedule:
+    - cron: "5,25 22 * * *"
+    - cron: "35,55 7 * * *"
+    - cron: "10 14-21 * * 1-5"
+  push:
+    branches: [main]
+    paths: [".github/workflows/fng.yml", "scripts/fng.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cnn-fear-greed
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch CNN Fear & Greed
+        run: python3 scripts/fng.py fng.json
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add fng.json
+          if git diff --staged --quiet; then echo "no change"; exit 0; fi
+          git commit -m "CNN 공포·탐욕 갱신"
+          for i in 1 2 3; do
+            git pull --rebase -q origin main && git push -q origin main && exit 0
+            sleep 5
+          done
+          exit 1
