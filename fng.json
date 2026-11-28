@@ -1,0 +1,100 @@
+{
+ "source": "https://edition.cnn.com/markets/fear-and-greed",
+ "score": 24.89,
+ "value": 25,
+ "rating": "extreme fear",
+ "rating_ko": "극단적 공포",
+ "updated": "2026-11-28T08:59+09:00",
+ "updated_label": "11/28 08:59",
+ "previous_close": 15.6,
+ "previous_1_week": 18.59,
+ "previous_1_month": 32.89,
+ "previous_1_year": 17.66,
+ "parts": [
+  {
+   "key": "market_momentum_sp500",
+   "name": "시장 모멘텀",
+   "score": 8.2,
+   "rating_ko": "극단적 공포"
+  },
+  {
+   "key": "stock_price_strength",
+   "name": "주가 강도",
+   "score": 28.8,
+   "rating_ko": "공포"
+  },
+  {
+   "key": "stock_price_breadth",
+   "name": "주가 폭",
+   "score": 29.6,
+   "rating_ko": "공포"
+  },
+  {
+   "key": "put_call_options",
+   "name": "풋/콜 옵션",
+   "score": 19.0,
+   "rating_ko": "극단적 공포"
+  },
+  {
+   "key": "market_volatility_vix",
+   "name": "시장 변동성(VIX)",
+   "score": 50.0,
+   "rating_ko": "중립"
+  },
+  {
+   "key": "junk_bond_demand",
+   "name": "정크본드 수요",
+   "score": 19.2,
+   "rating_ko": "극단적 공포"
+  },
+  {
+   "key": "safe_haven_demand",
+   "name": "안전자산 수요",
+   "score": 19.4,
+   "rating_ko": "극단적 공포"
+  }
+ ],
+ "recent": [
+  {
+   "date": "2026-11-17",
+   "value": 25.95
+  },
+  {
+   "date": "2026-11-18",
+   "value": 29.89
+  },
+  {
+   "date": "2026-11-19",
+   "value": 15.87
+  },
+  {
+   "date": "2026-11-20",
+   "value": 18.59
+  },
+  {
+   "date": "2026-11-23",
+   "value": 14.88
+  },
+  {
+   "date": "2026-11-24",
+   "value": 10.96
+  },
+  {
+   "date": "2026-11-25",
+   "value": 20.91
+  },
+  {
+   "date": "2026-11-26",
+   "value": 21.34
+  },
+  {
+   "date": "2026-11-27",
+   "value": 24.89
+  },
+  {
+   "date": "2026-11-28",
+   "value": 24.89
+  }
+ ],
+ "fetched": "2026-11-28T12:25+09:00"
+}
