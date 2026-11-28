@@ -1,11 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.tgwide{margin-top:0;padding:16px 18px 8px}
-.tgwide .tgh b{font-size:clamp(18px,2vw,22px)}
-.tgwide ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 22px}
-.tgwide li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid var(--hair)}
-.tgwide li a{margin-top:auto;padding-top:4px}
-@media(max-width:1100px){.tgwide ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.tgwide ol{grid-template-columns:minmax(0,1fr)}}
-</style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -161,6 +153,14 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
 @media(max-width:600px){.stats div{padding-right:16px;margin-right:16px}.dupd{grid-column:1/-1;grid-row:auto;text-align:left;margin-left:36px}.dupd b{display:inline;margin-right:6px}}
 @media(prefers-reduced-motion:no-preference){.hb-line path.ln{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 1.8s .2s ease-out forwards}@keyframes draw{to{stroke-dashoffset:0}}}
 .tg .x{display:block;color:var(--sub);font-size:14px;margin-top:2px}.tg .fw{font-size:12px;color:var(--sub);margin-left:6px}
+/* telegram wide box */
+.tgwide{margin-top:0;padding:16px 18px 8px}
+.tgwide .tgh b{font-size:clamp(18px,2vw,22px)}
+.tgwide ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 22px}
+.tgwide li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid var(--hair)}
+.tgwide li a{margin-top:auto;padding-top:4px}
+@media(max-width:1100px){.tgwide ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.tgwide ol{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -169,7 +169,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
   <h1 class="brand"><em>IH'</em> Market Board</h1>
   <div class="stats"><div><small>바로가기</small><b id="stLinks">0</b></div><div><small>분류</small><b id="stCats" class="w">0</b></div><div><small>SEOUL · KST</small><b id="clock" class="w">--</b></div></div>
   <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="바로가기 찾기 (예: 공포, 금리, 텔레그램)" aria-label="바로가기 찾기" autocomplete="off"></label>
-  <div class="date">11월 28일(토) 오전 7시 기준 · 미국 11/27(금) 마감(블랙프라이데이 조기 폐장, 11/26 추수감사절 휴장) · 한국 11/27(금) 마감(주말 휴장, 다음 거래일 11/30)</div>
+  <div class="date">11월 28일(토) 오후 5시 기준 · 한국 11/27 마감(오늘 주말 휴장, 다음 거래일 11/30) · 미국 11/27 마감(블랙프라이데이 조기 폐장)</div>
  </div>
 </header>
 
@@ -186,7 +186,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
    <a href="#links">바로가기</a><a href="#market">시황</a><a href="#telegram">텔레그램</a><a href="#sentiment">공포·탐욕</a><a href="#flows">수급</a><a href="#macro">경제지표</a><a href="#calendar">일정</a><a href="#view">투자자 관점</a><a href="#sources">출처</a>
   </nav>
   <h2 class="find">블랙프라이데이 랠리: 나스닥 +2.31%·필라델피아 반도체 +4.69%, S&amp;P500 주간 +5.6%로 19개월 만의 최고 주간. 다만 하이일드 스프레드는 3.68%p로 고점(3.77)에서 소폭 축소에 그쳤고, 미 10년물 4.94%로 반등</h2>
-  <p class="lede">미국 증시는 27일(현지 13:00 조기 폐장) S&amp;P500 +1.60% 7,297.49, 나스닥 +2.31% 24,129.50, 나스닥100 +2.61% 26,726.39, 다우 +1.18% 50,774.94로 마감했습니다. 주간으로는 S&amp;P500 +5.6%(2025년 4월 이후 최대), 나스닥 +6.68%, 다우 +5.46%(2022년 10월 이후 최대)입니다. 샌디스크 +15.96%·마이크론 +7.60%·인텔 +5.4%·AMD +4.56%가 이끈 반도체 반등으로 필라델피아 반도체지수가 +4.69% 9,186.71로 9,000선을 되찾았고, 앤트로픽은 +10.98%(91.88달러)로 공모가(83달러)를 처음 넘었습니다. VIX는 23.81(-11.16%)로 내려왔습니다. 그러나 미 10년물은 4.94%(25일 대비 +9bp), 2년물 4.69%(+8bp)로 올랐고 12월 인상 확률은 99.2%(CME 페드워치, 27일 오전)입니다. 하이일드 스프레드(ICE BofA OAS)는 11/27 3.68%p로 고점(11/25·26 3.77)에서 9bp 줄었지만 아직 30일선 위라 신용 쪽 경계는 남아 있습니다. 한국은 27일 외국인 1조1,298억원 순매수로 코스피 +4.34% 4,915.68, 코스닥 +8.13% 708.99로 마감했고, 금요일 밤 SK하이닉스 ADR +7.38%로 월요일(11/30) 출발 여건은 우호적입니다. CNN 공포·탐욕은 15(극단적 공포, 11/26 갱신 기준)입니다.</p>
+  <p class="lede">미국 증시는 27일(현지 13:00 조기 폐장) S&amp;P500 +1.60% 7,297.49, 나스닥 +2.31% 24,129.50, 나스닥100 +2.61% 26,726.39, 다우 +1.18% 50,774.94로 마감했습니다. 주간으로는 S&amp;P500 +5.6%(2025년 4월 이후 최대), 나스닥 +6.68%, 다우 +5.46%(2022년 10월 이후 최대)입니다. 샌디스크 +15.96%·마이크론 +7.60%·인텔 +5.4%·AMD +4.56%가 이끈 반도체 반등으로 필라델피아 반도체지수가 +4.69% 9,186.71로 9,000선을 되찾았고, 앤트로픽은 +10.98%(91.88달러)로 공모가(83달러)를 처음 넘었습니다. VIX는 23.81(-11.16%)로 내려왔습니다. 그러나 미 10년물은 4.94%(25일 대비 +9bp), 2년물 4.69%(+8bp)로 올랐고 12월 인상 확률은 99.2%(CME 페드워치, 27일 오전)입니다. 하이일드 스프레드(ICE BofA OAS)는 11/27 3.68%p로 고점(11/25·26 3.77)에서 9bp 줄었지만 아직 30일선 위라 신용 쪽 경계는 남아 있습니다. 한국은 27일 외국인 1조1,298억원 순매수로 코스피 +4.34% 4,915.68, 코스닥 +8.13% 708.99로 마감했고, 금요일 밤 SK하이닉스 ADR +7.38%로 월요일(11/30) 출발 여건은 우호적입니다. CNN 공포·탐욕은 25(24.89, 극단적 공포, 11/28 08:59 갱신)입니다. 오늘(28일 토)은 한국·미국 모두 휴장이라 오후 갱신에서 바뀐 시세는 없고, 주말 사이 29일 금융위 투자관리위원회·OPEC+ 회의, 30일 시장안정 긴급점검회의 결과가 월요일 출발의 변수입니다.</p>
  </div>
 </header>
 
@@ -210,7 +210,7 @@ footer a{color:var(--ink)}footer li{margin-bottom:4px;font-size:14px;overflow-wr
 <section class="band sec" id="market">
  <div class="wrap">
   <h2>시황 정리</h2>
-  <p class="say">미국은 27일 블랙프라이데이 조기 폐장장에서 반도체·AI주가 크게 반등하며 3대 지수가 1~2%대 올라 주간 기준 2022~2025년 이후 최대 상승으로 한 주를 마쳤습니다. 한국(27일)은 외국인이 조 단위로 돌아오며 코스피 +4.34%·코스닥 +8.13%의 급반등을 보였습니다. 한국은 주말 휴장이라 미국 금요일 반등은 월요일(11/30)에 반영됩니다.</p>
+  <p class="say">미국은 27일 블랙프라이데이 조기 폐장장에서 반도체·AI주가 크게 반등하며 3대 지수가 1~2%대 올라 주간 기준 2022~2025년 이후 최대 상승으로 한 주를 마쳤습니다. 한국(27일)은 외국인이 조 단위로 돌아오며 코스피 +4.34%·코스닥 +8.13%의 급반등을 보였습니다. 한국은 주말 휴장이라 미국 금요일 반등은 월요일(11/30)에 반영됩니다. 28일(토) 오후 기준 한국·미국 모두 휴장으로 새 마감 데이터는 없으며, 주말 미국 지수 선물 거래도 없어 수치는 27일 마감 그대로입니다.</p>
   <div class="two">
    <div class="story">
     <h3>미국 증시 (11/27 금, 조기 폐장)</h3>
@@ -655,5 +655,3 @@ vixLoad();setInterval(vixLoad,30*60*1000);
 </script>
 </body>
 </html>
-
-</body></html>
